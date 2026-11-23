@@ -6,7 +6,7 @@ A small agent that turns one natural-language reminder request into a structured
 - Frontend: one React + Vite page.
 - Evaluation: 33 cases, three layers (structural, property/invariant, semantic), JSON results and a hashed evidence folder per run.
 - Spec Kit artifacts: `.specify/memory/constitution.md`, `specs/001-nl-reminder-agent/` (`spec.md`, `plan.md`, `tasks.md`).
-- Repository: `<add the public GitHub URL here>`
+- Repository: `https://github.com/ruthuu/AI-Augmented-Software-Development`
 
 ## Important limitation: nothing is saved or rescheduled
 
