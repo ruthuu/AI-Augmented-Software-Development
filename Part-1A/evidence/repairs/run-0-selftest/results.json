@@ -1,0 +1,97 @@
+{
+    "run_folder":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1A\\evidence\\repairs\\run-0-selftest",
+    "mode":  "self-test",
+    "started_utc":  "2026-11-19T05:11:26Z",
+    "finished_utc":  "2026-11-19T05:11:31Z",
+    "counts":  {
+                   "required":  {
+                                    "PASS":  1,
+                                    "FAIL":  1,
+                                    "ERROR":  1,
+                                    "NOT RUN":  1
+                                },
+                   "supplementary":  {
+                                         "PASS":  0,
+                                         "FAIL":  0,
+                                         "ERROR":  0,
+                                         "NOT RUN":  0
+                                     }
+               },
+    "api_results_file":  null,
+    "self_test":  {
+                      "expected":  {
+                                       "selftest-pass":  "PASS",
+                                       "selftest-fail":  "FAIL",
+                                       "selftest-error":  "ERROR",
+                                       "selftest-not-run":  "NOT RUN"
+                                   },
+                      "matched":  true,
+                      "summary":  "the four synthetic checks produced exactly PASS, FAIL, ERROR, and NOT RUN"
+                  },
+    "checks":  [
+                   {
+                       "id":  "selftest-pass",
+                       "kind":  "required",
+                       "command":  "python -c \"print(\u00271 passed in 0.01s\u0027)\"",
+                       "status":  "PASS",
+                       "exit_code":  "0",
+                       "reason":  "1 tests passed",
+                       "start_utc":  "2026-11-19T05:11:26Z",
+                       "end_utc":  "2026-11-19T05:11:26Z",
+                       "files":  [
+                                     "selftest-pass.stdout.txt",
+                                     "selftest-pass.stderr.txt",
+                                     "selftest-pass.exitcode.txt",
+                                     "selftest-pass.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "selftest-fail",
+                       "kind":  "required",
+                       "command":  "python -c \"import sys; sys.exit(1)\"",
+                       "status":  "FAIL",
+                       "exit_code":  "1",
+                       "reason":  "exit code 1",
+                       "start_utc":  "2026-11-19T05:11:26Z",
+                       "end_utc":  "2026-11-19T05:11:26Z",
+                       "files":  [
+                                     "selftest-fail.stdout.txt",
+                                     "selftest-fail.stderr.txt",
+                                     "selftest-fail.exitcode.txt",
+                                     "selftest-fail.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "selftest-error",
+                       "kind":  "required",
+                       "command":  "spendwise-nonexistent-command-xyz",
+                       "status":  "ERROR",
+                       "exit_code":  "n/a",
+                       "reason":  "the command could not be started: Exception calling \"Start\" with \"1\" argument(s): \"The system cannot find the file specified\"",
+                       "start_utc":  "2026-11-19T05:11:26Z",
+                       "end_utc":  "2026-11-19T05:11:26Z",
+                       "files":  [
+                                     "selftest-error.stdout.txt",
+                                     "selftest-error.stderr.txt",
+                                     "selftest-error.exitcode.txt",
+                                     "selftest-error.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "selftest-not-run",
+                       "kind":  "required",
+                       "command":  "python -c \"print(1)\"",
+                       "status":  "NOT RUN",
+                       "exit_code":  "n/a",
+                       "reason":  "precondition not met: synthetic subject that does not exist",
+                       "start_utc":  "2026-11-19T05:11:26Z",
+                       "end_utc":  "2026-11-19T05:11:26Z",
+                       "files":  [
+                                     "selftest-not-run.stdout.txt",
+                                     "selftest-not-run.stderr.txt",
+                                     "selftest-not-run.exitcode.txt",
+                                     "selftest-not-run.meta.json"
+                                 ]
+                   }
+               ]
+}

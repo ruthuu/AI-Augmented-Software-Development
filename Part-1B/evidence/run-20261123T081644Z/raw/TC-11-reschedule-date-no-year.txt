@@ -1,0 +1,7 @@
+{
+  "intent": "RESCHEDULE",
+  "title": null,
+  "reminder_reference": "electricity bill",
+  "scheduled_at": "2026-12-01T10:00:00+05:30",
+  "clarification": null
+}

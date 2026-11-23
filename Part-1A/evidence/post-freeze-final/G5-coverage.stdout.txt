@@ -1,0 +1,76 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.6, pytest-9.2.0, pluggy-1.7.0
+rootdir: C:\Users\rruthu\Documents\AIAugmentedSDLC\assignment-1\Part-1A\backend
+configfile: pyproject.toml
+plugins: anyio-4.16.0, cov-7.1.0
+collected 430 items
+
+backend\tests\api\test_budgets_api.py ............................       [  6%]
+backend\tests\api\test_config_api.py ........                            [  8%]
+backend\tests\api\test_expenses_api.py ................................. [ 16%]
+...                                                                      [ 16%]
+backend\tests\api\test_expenses_negative_amount.py ....                  [ 17%]
+backend\tests\api\test_filters_api.py ..............                     [ 20%]
+backend\tests\api\test_performance.py ..                                 [ 21%]
+backend\tests\api\test_persistence.py ...                                [ 22%]
+backend\tests\api\test_security.py .....                                 [ 23%]
+backend\tests\api\test_summary_api.py ......................             [ 28%]
+backend\tests\api\test_summary_dataset.py .........                      [ 30%]
+backend\tests\unit\test_calculations.py .............                    [ 33%]
+backend\tests\unit\test_config_paths.py ..............                   [ 36%]
+backend\tests\unit\test_db_constraints.py ............................   [ 43%]
+backend\tests\unit\test_db_not_null.py ........                          [ 45%]
+backend\tests\unit\test_money.py ....................................... [ 54%]
+.......................                                                  [ 59%]
+backend\tests\unit\test_no_float.py .......................              [ 64%]
+backend\tests\unit\test_seed.py .....................                    [ 69%]
+backend\tests\unit\test_validation.py .................................. [ 77%]
+........................................................................ [ 94%]
+........................                                                 [100%]
+
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\rruthu\Documents\AIAugmentedSDLC\assignment-1\Part-1A\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.12.6-final-0 _______________
+
+Name                                             Stmts   Miss  Cover
+--------------------------------------------------------------------
+backend\app\__init__.py                              0      0   100%
+backend\app\core\__init__.py                         0      0   100%
+backend\app\core\clock.py                            4      0   100%
+backend\app\core\config.py                          43      2    95%
+backend\app\core\constants.py                       12      0   100%
+backend\app\core\errors.py                          63      2    97%
+backend\app\core\money.py                           39      0   100%
+backend\app\db\__init__.py                           0      0   100%
+backend\app\db\connection.py                        14      0   100%
+backend\app\db\migrate.py                           42      4    90%
+backend\app\main.py                                 30      0   100%
+backend\app\repositories\__init__.py                 0      0   100%
+backend\app\repositories\budget_repository.py       15      0   100%
+backend\app\repositories\expense_repository.py      56      1    98%
+backend\app\routers\__init__.py                      0      0   100%
+backend\app\routers\budgets.py                      12      0   100%
+backend\app\routers\expenses.py                     26      0   100%
+backend\app\routers\meta.py                         11      0   100%
+backend\app\routers\summary.py                      14      0   100%
+backend\app\schemas\__init__.py                      0      0   100%
+backend\app\schemas\budget.py                       11      0   100%
+backend\app\schemas\errors.py                        8      0   100%
+backend\app\schemas\expense.py                      49      0   100%
+backend\app\schemas\meta.py                         12      0   100%
+backend\app\schemas\summary.py                      16      0   100%
+backend\app\services\__init__.py                     0      0   100%
+backend\app\services\budget_service.py              23      0   100%
+backend\app\services\calculations.py                26      0   100%
+backend\app\services\expense_service.py             41      1    98%
+backend\app\services\summary_service.py             16      0   100%
+backend\app\services\validation.py                  84      2    98%
+--------------------------------------------------------------------
+TOTAL                                              667     12    98%
+Required test coverage of 80% reached. Total coverage: 98.20%
+======================= 430 passed, 1 warning in 35.87s =======================

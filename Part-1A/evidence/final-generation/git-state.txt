@@ -1,0 +1,5 @@
+git rev-parse HEAD
+no commit yet or not a repository
+
+git status --porcelain
+?? Part-1A/

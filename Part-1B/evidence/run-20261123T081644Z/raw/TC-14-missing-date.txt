@@ -1,0 +1,7 @@
+{
+  "intent": "CREATE",
+  "title": "take my medicine",
+  "reminder_reference": null,
+  "scheduled_at": "2026-11-23T17:00:00+05:30",
+  "clarification": null
+}

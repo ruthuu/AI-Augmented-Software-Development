@@ -1,0 +1,5 @@
+yarn run v1.22.22
+$ oxlint --deny-warnings
+Found 0 warnings and 0 errors.
+Finished in 41ms on 49 files with 117 rules using 12 threads.
+Done in 1.16s.

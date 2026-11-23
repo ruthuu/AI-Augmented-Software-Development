@@ -1,0 +1,11 @@
+{
+    "id":  "selftest-error",
+    "kind":  "required",
+    "command":  "spendwise-nonexistent-command-xyz",
+    "working_directory":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1A",
+    "start_utc":  "2026-11-19T05:11:26Z",
+    "end_utc":  "2026-11-19T05:11:26Z",
+    "exit_code":  "n/a",
+    "status":  "ERROR",
+    "reason":  "the command could not be started: Exception calling \"Start\" with \"1\" argument(s): \"The system cannot find the file specified\""
+}

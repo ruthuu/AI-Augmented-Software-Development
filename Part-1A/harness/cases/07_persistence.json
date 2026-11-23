@@ -1,0 +1,1575 @@
+{
+ "suite": "persistence",
+ "description": "After the server was stopped and restarted on the same database file",
+ "cases": [
+  {
+   "id": "PER-CONFIG",
+   "spec_ref": "FR-041",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/config"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "today": "2026-11-12",
+    "currency": "INR",
+    "categories": [
+     "Food",
+     "Transport",
+     "Shopping",
+     "Bills",
+     "Entertainment",
+     "Healthcare",
+     "Education",
+     "Other"
+    ],
+    "payment_methods": [
+     "Cash",
+     "Credit Card",
+     "Debit Card",
+     "UPI",
+     "Net Banking",
+     "Other"
+    ],
+    "limits": {
+     "max_expense": "9999999.99",
+     "max_budget": "99999999.99",
+     "max_description_length": 200,
+     "min_date": "2000-01-01"
+    }
+   }
+  },
+  {
+   "id": "PER-SUM-SEP",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-09"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-09",
+    "total_spent": "14824.80",
+    "expense_count": 18,
+    "total_recorded_count": 94,
+    "by_category": [
+     {
+      "category": "Education",
+      "total": "6199.00",
+      "count": 2
+     },
+     {
+      "category": "Shopping",
+      "total": "3799.49",
+      "count": 2
+     },
+     {
+      "category": "Bills",
+      "total": "2849.01",
+      "count": 2
+     },
+     {
+      "category": "Entertainment",
+      "total": "950.00",
+      "count": 2
+     },
+     {
+      "category": "Food",
+      "total": "430.89",
+      "count": 3
+     },
+     {
+      "category": "Healthcare",
+      "total": "396.05",
+      "count": 2
+     },
+     {
+      "category": "Transport",
+      "total": "185.10",
+      "count": 3
+     },
+     {
+      "category": "Other",
+      "total": "15.26",
+      "count": 2
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "Month 2026-09, 18 expenses. Education: 4999.00 + 1200.00 = 6199.00 (2); Shopping: 2499.99 + 1299.50 = 3799.49 (2); Bills: 1850.00 + 999.01 = 2849.01 (2); Entertainment: 650.00 + 300.00 = 950.00 (2); Food: 120.50 + 210.40 + 99.99 = 430.89 (3); Healthcare: 320.75 + 75.30 = 396.05 (2); Transport: 45.00 + 80.00 + 60.10 = 185.10 (3); Other: 15.25 + 0.01 = 15.26 (2). Total = sum of category totals = 14824.80."
+  },
+  {
+   "id": "PER-LIST-SEP",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-09"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "0.01",
+     "description": "Dataset S18",
+     "category": "Other",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-30",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "60.10",
+     "description": "Dataset S17",
+     "category": "Transport",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-09-30",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "99.99",
+     "description": "Dataset S16",
+     "category": "Food",
+     "payment_method": "Other",
+     "expense_date": "2026-09-29",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1200.00",
+     "description": "Dataset S15",
+     "category": "Education",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-09-27",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "75.30",
+     "description": "Dataset S14",
+     "category": "Healthcare",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-25",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "300.00",
+     "description": "Dataset S13",
+     "category": "Entertainment",
+     "payment_method": "Cash",
+     "expense_date": "2026-09-23",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "999.01",
+     "description": "Dataset S12",
+     "category": "Bills",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-09-21",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1299.50",
+     "description": "Dataset S11",
+     "category": "Shopping",
+     "payment_method": "Debit Card",
+     "expense_date": "2026-09-19",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "80.00",
+     "description": "Dataset S10",
+     "category": "Transport",
+     "payment_method": "Cash",
+     "expense_date": "2026-09-17",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "210.40",
+     "description": "Dataset S09",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-15",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "15.25",
+     "description": "Dataset S08",
+     "category": "Other",
+     "payment_method": "Cash",
+     "expense_date": "2026-09-13",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "4999.00",
+     "description": "Dataset S07",
+     "category": "Education",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-09-11",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "320.75",
+     "description": "Dataset S06",
+     "category": "Healthcare",
+     "payment_method": "Debit Card",
+     "expense_date": "2026-09-09",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "650.00",
+     "description": "Dataset S05",
+     "category": "Entertainment",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-07",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1850.00",
+     "description": "Dataset S04",
+     "category": "Bills",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-09-05",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "2499.99",
+     "description": "Dataset S03",
+     "category": "Shopping",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-09-03",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "45.00",
+     "description": "Dataset S02",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-01",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "120.50",
+     "description": "Dataset S01",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-09-01",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ]
+  },
+  {
+   "id": "PER-SUM-OCT",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-10"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-10",
+    "total_spent": "15304.68",
+    "expense_count": 18,
+    "total_recorded_count": 94,
+    "by_category": [
+     {
+      "category": "Shopping",
+      "total": "4798.99",
+      "count": 2
+     },
+     {
+      "category": "Bills",
+      "total": "3650.75",
+      "count": 2
+     },
+     {
+      "category": "Education",
+      "total": "3300.00",
+      "count": 2
+     },
+     {
+      "category": "Healthcare",
+      "total": "1840.00",
+      "count": 2
+     },
+     {
+      "category": "Entertainment",
+      "total": "649.50",
+      "count": 2
+     },
+     {
+      "category": "Food",
+      "total": "590.54",
+      "count": 3
+     },
+     {
+      "category": "Transport",
+      "total": "365.00",
+      "count": 3
+     },
+     {
+      "category": "Other",
+      "total": "109.90",
+      "count": 2
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "Month 2026-10, 18 expenses. Shopping: 3999.00 + 799.99 = 4798.99 (2); Bills: 1450.75 + 2200.00 = 3650.75 (2); Education: 2500.00 + 800.00 = 3300.00 (2); Healthcare: 1200.00 + 640.00 = 1840.00 (2); Entertainment: 499.00 + 150.50 = 649.50 (2); Food: 350.20 + 175.35 + 64.99 = 590.54 (3); Transport: 120.00 + 230.00 + 15.00 = 365.00 (3); Other: 89.90 + 20.00 = 109.90 (2). Total = sum of category totals = 15304.68."
+  },
+  {
+   "id": "PER-LIST-OCT",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-10"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "15.00",
+     "description": "Dataset T17",
+     "category": "Transport",
+     "payment_method": "Debit Card",
+     "expense_date": "2026-10-31",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "350.20",
+     "description": "Dataset T01",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-31",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "20.00",
+     "description": "Dataset T16",
+     "category": "Other",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-28",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "800.00",
+     "description": "Dataset T15",
+     "category": "Education",
+     "payment_method": "Cash",
+     "expense_date": "2026-10-26",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "640.00",
+     "description": "Dataset T14",
+     "category": "Healthcare",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-10-24",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "150.50",
+     "description": "Dataset T13",
+     "category": "Entertainment",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-22",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "2200.00",
+     "description": "Dataset T12",
+     "category": "Bills",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-10-20",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "799.99",
+     "description": "Dataset T11",
+     "category": "Shopping",
+     "payment_method": "Cash",
+     "expense_date": "2026-10-18",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "230.00",
+     "description": "Dataset T10",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-16",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "175.35",
+     "description": "Dataset T09",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-10-14",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "89.90",
+     "description": "Dataset T08",
+     "category": "Other",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-10-12",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "2500.00",
+     "description": "Dataset T07",
+     "category": "Education",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1200.00",
+     "description": "Dataset T06",
+     "category": "Healthcare",
+     "payment_method": "Cash",
+     "expense_date": "2026-10-08",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "499.00",
+     "description": "Dataset T05",
+     "category": "Entertainment",
+     "payment_method": "Debit Card",
+     "expense_date": "2026-10-06",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1450.75",
+     "description": "Dataset T04",
+     "category": "Bills",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-04",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "3999.00",
+     "description": "Dataset T03",
+     "category": "Shopping",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-10-02",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "64.99",
+     "description": "Dataset T18",
+     "category": "Food",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-10-01",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "120.00",
+     "description": "Dataset T02",
+     "category": "Transport",
+     "payment_method": "Cash",
+     "expense_date": "2026-10-01",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ]
+  },
+  {
+   "id": "PER-SUM-NOV",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-11"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-11",
+    "total_spent": "11459.90",
+    "expense_count": 18,
+    "total_recorded_count": 94,
+    "by_category": [
+     {
+      "category": "Education",
+      "total": "4000.00",
+      "count": 2
+     },
+     {
+      "category": "Bills",
+      "total": "2350.00",
+      "count": 2
+     },
+     {
+      "category": "Shopping",
+      "total": "1848.50",
+      "count": 2
+     },
+     {
+      "category": "Healthcare",
+      "total": "1450.00",
+      "count": 2
+     },
+     {
+      "category": "Entertainment",
+      "total": "1019.00",
+      "count": 2
+     },
+     {
+      "category": "Food",
+      "total": "523.88",
+      "count": 3
+     },
+     {
+      "category": "Transport",
+      "total": "220.55",
+      "count": 3
+     },
+     {
+      "category": "Other",
+      "total": "47.97",
+      "count": 2
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "Month 2026-11, 18 expenses. Education: 3000.00 + 1000.00 = 4000.00 (2); Bills: 1750.00 + 600.00 = 2350.00 (2); Shopping: 1599.00 + 249.50 = 1848.50 (2); Healthcare: 450.00 + 1000.00 = 1450.00 (2); Entertainment: 899.00 + 120.00 = 1019.00 (2); Food: 310.00 + 188.88 + 25.00 = 523.88 (3); Transport: 55.50 + 95.05 + 70.00 = 220.55 (3); Other: 42.42 + 5.55 = 47.97 (2). Total = sum of category totals = 11459.90."
+  },
+  {
+   "id": "PER-LIST-NOV",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-11"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "70.00",
+     "description": "Dataset N18",
+     "category": "Transport",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-11-12",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "5.55",
+     "description": "Dataset N17",
+     "category": "Other",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-12",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "25.00",
+     "description": "Dataset N16",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-11-12",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1000.00",
+     "description": "Dataset N15",
+     "category": "Education",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-12",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1000.00",
+     "description": "Dataset N14",
+     "category": "Healthcare",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-11-12",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "120.00",
+     "description": "Dataset N13",
+     "category": "Entertainment",
+     "payment_method": "Cash",
+     "expense_date": "2026-11-11",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "600.00",
+     "description": "Dataset N12",
+     "category": "Bills",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-11",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "249.50",
+     "description": "Dataset N11",
+     "category": "Shopping",
+     "payment_method": "Other",
+     "expense_date": "2026-11-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "95.05",
+     "description": "Dataset N10",
+     "category": "Transport",
+     "payment_method": "Cash",
+     "expense_date": "2026-11-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "188.88",
+     "description": "Dataset N09",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-09",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "42.42",
+     "description": "Dataset N08",
+     "category": "Other",
+     "payment_method": "Debit Card",
+     "expense_date": "2026-11-08",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "3000.00",
+     "description": "Dataset N07",
+     "category": "Education",
+     "payment_method": "Cash",
+     "expense_date": "2026-11-07",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "450.00",
+     "description": "Dataset N06",
+     "category": "Healthcare",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-06",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "899.00",
+     "description": "Dataset N05",
+     "category": "Entertainment",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-11-05",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1750.00",
+     "description": "Dataset N04",
+     "category": "Bills",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-11-04",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1599.00",
+     "description": "Dataset N03",
+     "category": "Shopping",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-03",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "55.50",
+     "description": "Dataset N02",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-02",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "310.00",
+     "description": "Dataset N01",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-11-01",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ]
+  },
+  {
+   "id": "PER-LIST-2026-02",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-02"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "250.50",
+     "description": "\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "250.50",
+     "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "250.50",
+     "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "250.50",
+     "description": "Caf\u00e9 \u20b9 \u65e5\u672c\u8a9e \ud83d\ude00",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "250.50",
+     "description": "x'); DROP TABLE expenses;--",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "250.50",
+     "description": "<b>Tom & \"Jerry's\"</b>",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "250.50",
+     "description": "bell",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "250.50",
+     "description": "ab",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "250.50",
+     "description": "abc",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "250.50",
+     "description": "Tom  Jerry",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "250.50",
+     "description": "Tom Jerry",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "250.50",
+     "description": "Tom Jerry",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "250.50",
+     "description": "Lunch with spaces",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1000000.00",
+     "description": "Amount accepted 1000000",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "9999999.99",
+     "description": "Amount accepted 9999999.99",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "12.50",
+     "description": "Amount accepted 12.50",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "12.50",
+     "description": "Amount accepted 12.5",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "12.00",
+     "description": "Amount accepted 12",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "0.01",
+     "description": "Amount accepted 0.01",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ]
+  },
+  {
+   "id": "PER-LIST-2026-03",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-03"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "10.00",
+     "description": "Duplicate",
+     "category": "Other",
+     "payment_method": "Cash",
+     "expense_date": "2026-03-20",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "10.00",
+     "description": "Duplicate",
+     "category": "Other",
+     "payment_method": "Cash",
+     "expense_date": "2026-03-20",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ]
+  },
+  {
+   "id": "PER-LIST-2026-04",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-04"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "300.00",
+     "description": "E1 edited",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-04-02",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ]
+  },
+  {
+   "id": "PER-LIST-2026-01",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-01"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "30.00",
+     "description": "F3 last day of Jan 2026",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-01-31",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "20.00",
+     "description": "F2 first day of Jan 2026",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-01-01",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ]
+  },
+  {
+   "id": "PER-LIST-2025-12",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2025-12"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "10.00",
+     "description": "F1 last day of Dec 2025",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2025-12-31",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ]
+  },
+  {
+   "id": "PER-LIST-2025-11",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2025-11"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "50.00",
+     "description": "TIE-EDU",
+     "category": "Education",
+     "payment_method": "Cash",
+     "expense_date": "2025-11-15",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "50.00",
+     "description": "TIE-BILLS",
+     "category": "Bills",
+     "payment_method": "Cash",
+     "expense_date": "2025-11-15",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "50.00",
+     "description": "TIE-TRANSPORT",
+     "category": "Transport",
+     "payment_method": "Cash",
+     "expense_date": "2025-11-15",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "75.00",
+     "description": "TIE-FOOD",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2025-11-15",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ]
+  },
+  {
+   "id": "PER-LIST-2026-05",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-05"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "50.00",
+     "description": "Worked example W3",
+     "category": "Transport",
+     "payment_method": "Cash",
+     "expense_date": "2026-05-12",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "200.20",
+     "description": "Worked example W2",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-05-11",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "100.10",
+     "description": "Worked example W1",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-05-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ]
+  },
+  {
+   "id": "PER-LIST-2026-07",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-07"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "3999.99",
+     "description": "Budget X2",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-07-31",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "0.01",
+     "description": "Budget X4",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-07-16",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "0.01",
+     "description": "Budget X3",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-07-15",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "6000.00",
+     "description": "Budget X1",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-07-01",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ]
+  },
+  {
+   "id": "PER-LIST-2026-08",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-08"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "11.11",
+     "description": "Dataset A01",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-08-31",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ]
+  },
+  {
+   "id": "PER-SUM-2026-07",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-07"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-07",
+    "total_spent": "10000.01",
+    "expense_count": 4,
+    "total_recorded_count": 94,
+    "by_category": [
+     {
+      "category": "Food",
+      "total": "6000.00",
+      "count": 1
+     },
+     {
+      "category": "Transport",
+      "total": "4000.01",
+      "count": 3
+     }
+    ],
+    "budget": {
+     "month": "2026-07",
+     "amount": "10000.00"
+    },
+    "remaining": "0.00",
+    "over_budget": true,
+    "over_budget_by": "0.01"
+   }
+  },
+  {
+   "id": "PER-SUM-2026-06",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-06"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-06",
+    "total_spent": "0.00",
+    "expense_count": 0,
+    "total_recorded_count": 94,
+    "by_category": [],
+    "budget": {
+     "month": "2026-06",
+     "amount": "99999999.99"
+    },
+    "remaining": "99999999.99",
+    "over_budget": false,
+    "over_budget_by": null
+   }
+  },
+  {
+   "id": "PER-SUM-2026-05",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-05"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-05",
+    "total_spent": "350.30",
+    "expense_count": 3,
+    "total_recorded_count": 94,
+    "by_category": [
+     {
+      "category": "Food",
+      "total": "300.30",
+      "count": 2
+     },
+     {
+      "category": "Transport",
+      "total": "50.00",
+      "count": 1
+     }
+    ],
+    "budget": {
+     "month": "2026-05",
+     "amount": "10000.00"
+    },
+    "remaining": "9649.70",
+    "over_budget": false,
+    "over_budget_by": null
+   }
+  },
+  {
+   "id": "PER-SUM-2026-03",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-03"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-03",
+    "total_spent": "20.00",
+    "expense_count": 2,
+    "total_recorded_count": 94,
+    "by_category": [
+     {
+      "category": "Other",
+      "total": "20.00",
+      "count": 2
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   }
+  },
+  {
+   "id": "PER-SUM-2026-04",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-04"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-04",
+    "total_spent": "300.00",
+    "expense_count": 1,
+    "total_recorded_count": 94,
+    "by_category": [
+     {
+      "category": "Food",
+      "total": "300.00",
+      "count": 1
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   }
+  },
+  {
+   "id": "PER-SUM-1999-12",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=1999-12"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "1999-12",
+    "total_spent": "0.00",
+    "expense_count": 0,
+    "total_recorded_count": 94,
+    "by_category": [],
+    "budget": {
+     "month": "1999-12",
+     "amount": "100.00"
+    },
+    "remaining": "100.00",
+    "over_budget": false,
+    "over_budget_by": null
+   }
+  },
+  {
+   "id": "PER-SUM-9999-12",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=9999-12"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "9999-12",
+    "total_spent": "0.00",
+    "expense_count": 0,
+    "total_recorded_count": 94,
+    "by_category": [],
+    "budget": {
+     "month": "9999-12",
+     "amount": "100.00"
+    },
+    "remaining": "100.00",
+    "over_budget": false,
+    "over_budget_by": null
+   }
+  },
+  {
+   "id": "PER-SUM-2025-11",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2025-11"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2025-11",
+    "total_spent": "225.00",
+    "expense_count": 4,
+    "total_recorded_count": 94,
+    "by_category": [
+     {
+      "category": "Food",
+      "total": "75.00",
+      "count": 1
+     },
+     {
+      "category": "Bills",
+      "total": "50.00",
+      "count": 1
+     },
+     {
+      "category": "Education",
+      "total": "50.00",
+      "count": 1
+     },
+     {
+      "category": "Transport",
+      "total": "50.00",
+      "count": 1
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   }
+  },
+  {
+   "id": "PER-LIST-ALL",
+   "spec_ref": "FR-005, SC-008",
+   "phase": "verify",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "$expense_order": true,
+    "$length": 94
+   },
+   "derivation": "Every expense stored in the write phase, minus the deleted one: 94."
+  }
+ ]
+}

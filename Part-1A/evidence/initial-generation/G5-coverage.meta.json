@@ -1,0 +1,11 @@
+{
+    "id":  "G5-coverage",
+    "kind":  "required",
+    "command":  "pytest backend --cov=app --cov-fail-under=80",
+    "working_directory":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1A",
+    "start_utc":  "2026-11-20T15:58:01Z",
+    "end_utc":  "2026-11-20T15:58:28Z",
+    "exit_code":  "0",
+    "status":  "PASS",
+    "reason":  "418 tests passed and a coverage percentage was reported"
+}

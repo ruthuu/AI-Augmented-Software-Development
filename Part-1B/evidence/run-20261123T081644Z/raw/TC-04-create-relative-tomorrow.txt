@@ -1,0 +1,7 @@
+{
+  "intent": "CREATE",
+  "title": "call mom",
+  "reminder_reference": null,
+  "scheduled_at": "2026-11-24T18:00:00+05:30",
+  "clarification": null
+}

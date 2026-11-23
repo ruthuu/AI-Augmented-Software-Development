@@ -1,0 +1,7 @@
+{
+  "intent": "CLARIFY",
+  "title": null,
+  "reminder_reference": null,
+  "scheduled_at": null,
+  "clarification": "Which day would you like to be reminded at 5pm?"
+}

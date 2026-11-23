@@ -1,0 +1,11 @@
+{
+    "id":  "G6-core-services-coverage",
+    "kind":  "required",
+    "command":  "coverage report --include=*/app/services/*,*/app/core/* --fail-under=90",
+    "working_directory":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1A",
+    "start_utc":  "2026-11-19T05:10:56Z",
+    "end_utc":  "2026-11-19T05:10:56Z",
+    "exit_code":  "n/a",
+    "status":  "NOT RUN",
+    "reason":  "precondition not met: G5 did not run, so there is no coverage data"
+}

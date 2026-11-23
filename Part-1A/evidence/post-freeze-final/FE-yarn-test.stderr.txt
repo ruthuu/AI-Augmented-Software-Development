@@ -1,0 +1,44 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/App.test.tsx > App shell > shows the shell with the backend date once the configuration has loaded
+TestingLibraryElementError: Unable to find an element with the text: Today: 12 Nov 2026. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"page"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"page-header"[39m
+      [36m>[39m
+        [36m<h1>[39m
+          [0mSpendWise[0m
+        [36m</h1>[39m
+      [36m</header>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"loading"[39m
+        [33mrole[39m=[32m"status"[39m
+      [36m>[39m
+        [0mLoading[0m
+        [0m…[0m
+      [36m</p>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/App.test.tsx:49:19
+     47|     render(<App />)
+     48|     expect(await screen.findByRole('heading', { name: 'SpendWise' })).…
+     49|     expect(screen.getByText('Today: 12 Nov 2026')).toBeInTheDocument()
+       |                   ^
+     50|     expect(await screen.findByText(/add your first expense/i)).toBeInT…
+     51|     expect(screen.queryByRole('status')).not.toBeInTheDocument()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+error Command failed with exit code 1.

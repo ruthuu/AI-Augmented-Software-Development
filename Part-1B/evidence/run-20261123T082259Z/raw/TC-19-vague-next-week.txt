@@ -1,0 +1,7 @@
+{
+  "intent": "CLARIFY",
+  "title": null,
+  "reminder_reference": null,
+  "scheduled_at": null,
+  "clarification": "What exact day and time next week should I set the reminder for?"
+}

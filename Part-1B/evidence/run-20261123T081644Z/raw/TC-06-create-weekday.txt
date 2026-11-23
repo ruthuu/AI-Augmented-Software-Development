@@ -1,0 +1,7 @@
+{
+  "intent": "CREATE",
+  "title": "send the invoice",
+  "reminder_reference": null,
+  "scheduled_at": "2026-11-27T14:00:00+05:30",
+  "clarification": null
+}

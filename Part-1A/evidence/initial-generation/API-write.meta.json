@@ -1,0 +1,11 @@
+{
+    "id":  "API-write",
+    "kind":  "required",
+    "command":  "python harness\\run_api_checks.py --base-url http://127.0.0.1:50318 --phase write --out api-results.json",
+    "working_directory":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1A",
+    "start_utc":  "2026-11-20T15:59:10Z",
+    "end_utc":  "2026-11-20T15:59:14Z",
+    "exit_code":  "0",
+    "status":  "PASS",
+    "reason":  "242 cases compared and all matched"
+}

@@ -1,0 +1,16 @@
+Name                                      Stmts   Miss  Cover
+-------------------------------------------------------------
+backend\app\core\__init__.py                  0      0   100%
+backend\app\core\clock.py                     4      0   100%
+backend\app\core\config.py                   43      2    95%
+backend\app\core\constants.py                12      0   100%
+backend\app\core\errors.py                   63      2    97%
+backend\app\core\money.py                    39      0   100%
+backend\app\services\__init__.py              0      0   100%
+backend\app\services\budget_service.py       23      0   100%
+backend\app\services\calculations.py         26      0   100%
+backend\app\services\expense_service.py      41      1    98%
+backend\app\services\summary_service.py      16      0   100%
+backend\app\services\validation.py           84      2    98%
+-------------------------------------------------------------
+TOTAL                                       351      7    98%

@@ -1,0 +1,38 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.6, pytest-9.2.0, pluggy-1.7.0
+rootdir: C:\Users\rruthu\Documents\AIAugmentedSDLC\assignment-1\Part-1A\backend
+configfile: pyproject.toml
+plugins: anyio-4.16.0, cov-7.1.0
+collected 436 items
+
+backend\tests\api\test_budgets_api.py ............................       [  6%]
+backend\tests\api\test_config_api.py ........                            [  8%]
+backend\tests\api\test_expenses_api.py ................................. [ 15%]
+...                                                                      [ 16%]
+backend\tests\api\test_expenses_date_format.py ......                    [ 17%]
+backend\tests\api\test_expenses_negative_amount.py ....                  [ 18%]
+backend\tests\api\test_filters_api.py ..............                     [ 22%]
+backend\tests\api\test_performance.py ..                                 [ 22%]
+backend\tests\api\test_persistence.py ...                                [ 23%]
+backend\tests\api\test_security.py .....                                 [ 24%]
+backend\tests\api\test_summary_api.py ......................             [ 29%]
+backend\tests\api\test_summary_dataset.py .........                      [ 31%]
+backend\tests\unit\test_calculations.py .............                    [ 34%]
+backend\tests\unit\test_config_paths.py ..............                   [ 37%]
+backend\tests\unit\test_db_constraints.py ............................   [ 44%]
+backend\tests\unit\test_db_not_null.py ........                          [ 45%]
+backend\tests\unit\test_money.py ....................................... [ 54%]
+.......................                                                  [ 60%]
+backend\tests\unit\test_no_float.py .......................              [ 65%]
+backend\tests\unit\test_seed.py .....................                    [ 70%]
+backend\tests\unit\test_validation.py .................................. [ 77%]
+........................................................................ [ 94%]
+........................                                                 [100%]
+
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\rruthu\Documents\AIAugmentedSDLC\assignment-1\Part-1A\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 436 passed, 1 warning in 16.73s =======================

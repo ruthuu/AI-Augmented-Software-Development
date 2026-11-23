@@ -1,0 +1,7 @@
+{
+  "intent": "CREATE",
+  "title": "renew my passport",
+  "reminder_reference": null,
+  "scheduled_at": "2026-12-05T08:30:00+05:30",
+  "clarification": null
+}

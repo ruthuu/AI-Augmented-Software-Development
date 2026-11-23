@@ -1,0 +1,11 @@
+{
+    "id":  "G5-coverage",
+    "kind":  "required",
+    "command":  "pytest backend --cov=app --cov-fail-under=80",
+    "working_directory":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1A",
+    "start_utc":  "2026-11-19T05:10:56Z",
+    "end_utc":  "2026-11-19T05:10:56Z",
+    "exit_code":  "n/a",
+    "status":  "NOT RUN",
+    "reason":  "precondition not met: no test_*.py under backend/tests"
+}

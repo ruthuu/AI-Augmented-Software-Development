@@ -1,0 +1,726 @@
+{
+ "suite": "filters",
+ "description": "Month and category filters, month boundaries, empty results, and category ordering",
+ "cases": [
+  {
+   "id": "FIL-C-F1",
+   "spec_ref": "FR-035",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "10.00",
+     "description": "F1 last day of Dec 2025",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2025-12-31"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "10.00",
+    "description": "F1 last day of Dec 2025",
+    "category": "Food",
+    "payment_method": "Cash",
+    "expense_date": "2025-12-31",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "FIL-C-F2",
+   "spec_ref": "FR-035",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "20.00",
+     "description": "F2 first day of Jan 2026",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-01-01"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "20.00",
+    "description": "F2 first day of Jan 2026",
+    "category": "Transport",
+    "payment_method": "UPI",
+    "expense_date": "2026-01-01",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "FIL-C-F3",
+   "spec_ref": "FR-035",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "30.00",
+     "description": "F3 last day of Jan 2026",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-01-31"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "30.00",
+    "description": "F3 last day of Jan 2026",
+    "category": "Food",
+    "payment_method": "Cash",
+    "expense_date": "2026-01-31",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "FIL-L-DEC",
+   "spec_ref": "FR-019, FR-035, SC-007",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2025-12"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "10.00",
+     "description": "F1 last day of Dec 2025",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2025-12-31",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ],
+   "note": "2025-12-31 belongs to December 2025 only."
+  },
+  {
+   "id": "FIL-L-JAN",
+   "spec_ref": "FR-019, FR-035, SC-007",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-01"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "30.00",
+     "description": "F3 last day of Jan 2026",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-01-31",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "20.00",
+     "description": "F2 first day of Jan 2026",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-01-01",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ],
+   "note": "2026-01-01 and 2026-01-31 are both inside January; 2025-12-31 is not."
+  },
+  {
+   "id": "FIL-L-JAN-FOOD",
+   "spec_ref": "FR-020",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-01&category=Food"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "30.00",
+     "description": "F3 last day of Jan 2026",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-01-31",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ]
+  },
+  {
+   "id": "FIL-L-JAN-TRANSPORT",
+   "spec_ref": "FR-020",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-01&category=Transport"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "20.00",
+     "description": "F2 first day of Jan 2026",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-01-01",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ]
+  },
+  {
+   "id": "FIL-L-JAN-EDU",
+   "spec_ref": "FR-020, FR-022",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-01&category=Education"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [],
+   "note": "No match: empty array."
+  },
+  {
+   "id": "FIL-L-NONE",
+   "spec_ref": "FR-022",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2020-01"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [],
+   "note": "A valid month without data returns []."
+  },
+  {
+   "id": "FIL-L-SEP-FOOD",
+   "spec_ref": "FR-018, FR-020, SC-007",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-09&category=Food"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "99.99",
+     "description": "Dataset S16",
+     "category": "Food",
+     "payment_method": "Other",
+     "expense_date": "2026-09-29",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "210.40",
+     "description": "Dataset S09",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-15",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "120.50",
+     "description": "Dataset S01",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-09-01",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ]
+  },
+  {
+   "id": "FIL-L-HEALTH",
+   "spec_ref": "FR-018, SC-007",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?category=Healthcare"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "1000.00",
+     "description": "Dataset N14",
+     "category": "Healthcare",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-11-12",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "450.00",
+     "description": "Dataset N06",
+     "category": "Healthcare",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-06",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "640.00",
+     "description": "Dataset T14",
+     "category": "Healthcare",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-10-24",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1200.00",
+     "description": "Dataset T06",
+     "category": "Healthcare",
+     "payment_method": "Cash",
+     "expense_date": "2026-10-08",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "75.30",
+     "description": "Dataset S14",
+     "category": "Healthcare",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-25",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "320.75",
+     "description": "Dataset S06",
+     "category": "Healthcare",
+     "payment_method": "Debit Card",
+     "expense_date": "2026-09-09",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ],
+   "note": "Only the dataset uses Healthcare, so this is every Healthcare expense in the database."
+  },
+  {
+   "id": "FIL-L-ALL",
+   "spec_ref": "FR-021",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "$expense_order": true,
+    "$length": 83
+   },
+   "note": "No filter: every expense, expense_date descending then id descending.",
+   "derivation": "Ledger of stored expenses at this point: 83."
+  },
+  {
+   "id": "FIL-SUM-JAN",
+   "spec_ref": "FR-035",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-01"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-01",
+    "total_spent": "50.00",
+    "expense_count": 2,
+    "total_recorded_count": 83,
+    "by_category": [
+     {
+      "category": "Food",
+      "total": "30.00",
+      "count": 1
+     },
+     {
+      "category": "Transport",
+      "total": "20.00",
+      "count": 1
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "F2 20.00 (Transport) + F3 30.00 (Food) = 50.00, count 2; Food 30.00 (1) comes before Transport 20.00 (1) because 30.00 > 20.00. 2025-12-31 is excluded."
+  },
+  {
+   "id": "FIL-SUM-DEC",
+   "spec_ref": "FR-035",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2025-12"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2025-12",
+    "total_spent": "10.00",
+    "expense_count": 1,
+    "total_recorded_count": 83,
+    "by_category": [
+     {
+      "category": "Food",
+      "total": "10.00",
+      "count": 1
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "F1 10.00 (Food) only: total 10.00, count 1."
+  },
+  {
+   "id": "FIL-Q-MONTH-13",
+   "spec_ref": "contracts/api.md GET /api/expenses",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-13"
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "month",
+      "message": "Enter a valid month"
+     }
+    ]
+   }
+  },
+  {
+   "id": "FIL-Q-MONTH-ABC",
+   "spec_ref": "contracts/api.md GET /api/expenses",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=abc"
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "month",
+      "message": "Enter a valid month"
+     }
+    ]
+   }
+  },
+  {
+   "id": "FIL-Q-MONTH-SHORT",
+   "spec_ref": "contracts/api.md GET /api/expenses",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-1"
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "month",
+      "message": "Enter a valid month"
+     }
+    ]
+   }
+  },
+  {
+   "id": "FIL-Q-CAT-BAD",
+   "spec_ref": "contracts/api.md GET /api/expenses",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?category=Nope"
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "category",
+      "message": "Select a valid category"
+     }
+    ]
+   }
+  },
+  {
+   "id": "FIL-Q-BOTH-BAD",
+   "spec_ref": "contracts/api.md GET /api/expenses",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-13&category=Nope"
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": {
+     "$unordered": [
+      {
+       "field": "month",
+       "message": "Enter a valid month"
+      },
+      {
+       "field": "category",
+       "message": "Select a valid category"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "FIL-Q-SUM-BAD",
+   "spec_ref": "contracts/api.md GET /api/summary",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=abc"
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "month",
+      "message": "Enter a valid month"
+     }
+    ]
+   }
+  },
+  {
+   "id": "FIL-Q-SUM-13",
+   "spec_ref": "contracts/api.md GET /api/summary",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-13"
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "month",
+      "message": "Enter a valid month"
+     }
+    ]
+   }
+  },
+  {
+   "id": "FIL-C-TIE-FOOD",
+   "spec_ref": "FR-031",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "75.00",
+     "description": "TIE-FOOD",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2025-11-15"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "75.00",
+    "description": "TIE-FOOD",
+    "category": "Food",
+    "payment_method": "Cash",
+    "expense_date": "2025-11-15",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "FIL-C-TIE-TRANSPORT",
+   "spec_ref": "FR-031",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "50.00",
+     "description": "TIE-TRANSPORT",
+     "category": "Transport",
+     "payment_method": "Cash",
+     "expense_date": "2025-11-15"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "50.00",
+    "description": "TIE-TRANSPORT",
+    "category": "Transport",
+    "payment_method": "Cash",
+    "expense_date": "2025-11-15",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "FIL-C-TIE-BILLS",
+   "spec_ref": "FR-031",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "50.00",
+     "description": "TIE-BILLS",
+     "category": "Bills",
+     "payment_method": "Cash",
+     "expense_date": "2025-11-15"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "50.00",
+    "description": "TIE-BILLS",
+    "category": "Bills",
+    "payment_method": "Cash",
+    "expense_date": "2025-11-15",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "FIL-C-TIE-EDU",
+   "spec_ref": "FR-031",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "50.00",
+     "description": "TIE-EDU",
+     "category": "Education",
+     "payment_method": "Cash",
+     "expense_date": "2025-11-15"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "50.00",
+    "description": "TIE-EDU",
+    "category": "Education",
+    "payment_method": "Cash",
+    "expense_date": "2025-11-15",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "FIL-SUM-TIE",
+   "spec_ref": "FR-031",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2025-11"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2025-11",
+    "total_spent": "225.00",
+    "expense_count": 4,
+    "total_recorded_count": 87,
+    "by_category": [
+     {
+      "category": "Food",
+      "total": "75.00",
+      "count": 1
+     },
+     {
+      "category": "Bills",
+      "total": "50.00",
+      "count": 1
+     },
+     {
+      "category": "Education",
+      "total": "50.00",
+      "count": 1
+     },
+     {
+      "category": "Transport",
+      "total": "50.00",
+      "count": 1
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "Food 75.00 first (highest); Bills, Education, Transport all 50.00, so by name: Bills, Education, Transport. Total 75.00 + 50.00 + 50.00 + 50.00 = 225.00, count 4."
+  }
+ ]
+}

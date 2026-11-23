@@ -1,0 +1,11 @@
+{
+    "id":  "G4-pytest",
+    "kind":  "required",
+    "command":  "pytest backend",
+    "working_directory":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1A",
+    "start_utc":  "2026-11-20T16:41:05Z",
+    "end_utc":  "2026-11-20T16:41:25Z",
+    "exit_code":  "0",
+    "status":  "PASS",
+    "reason":  "418 tests passed"
+}

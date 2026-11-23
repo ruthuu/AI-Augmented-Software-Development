@@ -1,0 +1,7 @@
+﻿{
+    "gate":  "G4-evaluation",
+    "command":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1B\\.venv\\Scripts\\python.exe harness/run_eval.py --run-dir \"C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1B\\evidence\\run-20261123T082957Z\" --delay 4",
+    "exit_code":  0,
+    "started_utc":  "2026-11-23T08:30:12Z",
+    "finished_utc":  "2026-11-23T08:32:58Z"
+}

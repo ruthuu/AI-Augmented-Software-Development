@@ -1,0 +1,7 @@
+{
+  "intent": "RESCHEDULE",
+  "title": null,
+  "reminder_reference": "dentist reminder",
+  "scheduled_at": "2026-12-04T16:00:00+05:30",
+  "clarification": null
+}

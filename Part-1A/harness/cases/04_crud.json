@@ -1,0 +1,514 @@
+{
+ "suite": "crud",
+ "description": "Create, list order, update, delete, 404, and updates across two months",
+ "cases": [
+  {
+   "id": "CRUD-001-E1",
+   "spec_ref": "FR-001",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "100.00",
+     "description": "E1 original",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-03-05"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "100.00",
+    "description": "E1 original",
+    "category": "Food",
+    "payment_method": "Cash",
+    "expense_date": "2026-03-05",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "save": {
+    "e1": "id",
+    "e1_created": "created_at"
+   }
+  },
+  {
+   "id": "CRUD-002-E2",
+   "spec_ref": "FR-001",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "50.00",
+     "description": "E2 original",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-03-06"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "50.00",
+    "description": "E2 original",
+    "category": "Transport",
+    "payment_method": "UPI",
+    "expense_date": "2026-03-06",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "save": {
+    "e2": "id"
+   }
+  },
+  {
+   "id": "CRUD-003-LIST-MARCH",
+   "spec_ref": "FR-002",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-03"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$var:e2",
+     "amount": "50.00",
+     "description": "E2 original",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-03-06",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$var:e1",
+     "amount": "100.00",
+     "description": "E1 original",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-03-05",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ],
+   "note": "Newest date first."
+  },
+  {
+   "id": "CRUD-004-SUM-MARCH",
+   "spec_ref": "FR-025, FR-029, FR-034",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-03"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-03",
+    "total_spent": "150.00",
+    "expense_count": 2,
+    "total_recorded_count": 79,
+    "by_category": [
+     {
+      "category": "Food",
+      "total": "100.00",
+      "count": 1
+     },
+     {
+      "category": "Transport",
+      "total": "50.00",
+      "count": 1
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "E1 100.00 (Food) + E2 50.00 (Transport) = 150.00, count 2; Food 100.00 then Transport 50.00."
+  },
+  {
+   "id": "CRUD-005-PUT-INVALID",
+   "spec_ref": "FR-003, FR-014, contracts/api.md PUT",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/expenses/{{e1}}",
+    "body": {
+     "amount": "0",
+     "description": "E1 original",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-03-05"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Amount must be greater than zero"
+     }
+    ]
+   },
+   "note": "A rejected update leaves the stored expense unchanged."
+  },
+  {
+   "id": "CRUD-006-LIST-UNCHANGED",
+   "spec_ref": "FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-03"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$var:e2",
+     "amount": "50.00",
+     "description": "E2 original",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-03-06",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$var:e1",
+     "amount": "100.00",
+     "description": "E1 original",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-03-05",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ]
+  },
+  {
+   "id": "CRUD-007-PUT-OK",
+   "spec_ref": "FR-003, FR-036, contracts/api.md PUT",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/expenses/{{e1}}",
+    "body": {
+     "amount": "300.00",
+     "description": "E1 edited",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-04-02"
+    }
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "id": "$var:e1",
+    "amount": "300.00",
+    "description": "E1 edited",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-04-02",
+    "created_at": "$var:e1_created",
+    "updated_at": "$utc"
+   },
+   "note": "Same id and created_at; amount and date changed (moves from March to April)."
+  },
+  {
+   "id": "CRUD-008-SUM-MARCH-AFTER",
+   "spec_ref": "FR-036",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-03"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-03",
+    "total_spent": "50.00",
+    "expense_count": 1,
+    "total_recorded_count": 79,
+    "by_category": [
+     {
+      "category": "Transport",
+      "total": "50.00",
+      "count": 1
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "Only E2 remains in March: total 50.00, count 1, Transport 50.00."
+  },
+  {
+   "id": "CRUD-009-SUM-APRIL-AFTER",
+   "spec_ref": "FR-036",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-04"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-04",
+    "total_spent": "300.00",
+    "expense_count": 1,
+    "total_recorded_count": 79,
+    "by_category": [
+     {
+      "category": "Food",
+      "total": "300.00",
+      "count": 1
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "E1 moved to 2026-04-02 with amount 300.00: total 300.00, count 1, Food 300.00."
+  },
+  {
+   "id": "CRUD-010-PUT-MISSING",
+   "spec_ref": "FR-003, contracts/api.md 404",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/expenses/9999999",
+    "body": {
+     "amount": "300.00",
+     "description": "E1 edited",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-04-02"
+    }
+   },
+   "expected_status": 404,
+   "expected_body_or_fields": {
+    "code": "not_found",
+    "message": "This expense no longer exists",
+    "errors": []
+   }
+  },
+  {
+   "id": "CRUD-011-DELETE-E2",
+   "spec_ref": "FR-004, contracts/api.md DELETE",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "DELETE",
+    "path": "/api/expenses/{{e2}}"
+   },
+   "expected_status": 204,
+   "expected_body_or_fields": "$empty"
+  },
+  {
+   "id": "CRUD-012-DELETE-AGAIN",
+   "spec_ref": "contracts/api.md DELETE",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "DELETE",
+    "path": "/api/expenses/{{e2}}"
+   },
+   "expected_status": 404,
+   "expected_body_or_fields": {
+    "code": "not_found",
+    "message": "This expense no longer exists",
+    "errors": []
+   }
+  },
+  {
+   "id": "CRUD-013-PUT-DELETED",
+   "spec_ref": "contracts/api.md PUT",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/expenses/{{e2}}",
+    "body": {
+     "amount": "50.00",
+     "description": "E2 original",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-03-06"
+    }
+   },
+   "expected_status": 404,
+   "expected_body_or_fields": {
+    "code": "not_found",
+    "message": "This expense no longer exists",
+    "errors": []
+   }
+  },
+  {
+   "id": "CRUD-014-SUM-MARCH-EMPTY",
+   "spec_ref": "FR-036",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-03"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-03",
+    "total_spent": "0.00",
+    "expense_count": 0,
+    "total_recorded_count": 78,
+    "by_category": [],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "E2 deleted: March is empty: total 0.00, count 0, by_category []."
+  },
+  {
+   "id": "CRUD-015-LIST-MARCH-EMPTY",
+   "spec_ref": "FR-022",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-03"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": []
+  },
+  {
+   "id": "CRUD-016-DUP-1",
+   "spec_ref": "Edge case: identical expenses are allowed",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "10.00",
+     "description": "Duplicate",
+     "category": "Other",
+     "payment_method": "Cash",
+     "expense_date": "2026-03-20"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "10.00",
+    "description": "Duplicate",
+    "category": "Other",
+    "payment_method": "Cash",
+    "expense_date": "2026-03-20",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "CRUD-017-DUP-2",
+   "spec_ref": "Edge case: identical expenses are allowed",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "10.00",
+     "description": "Duplicate",
+     "category": "Other",
+     "payment_method": "Cash",
+     "expense_date": "2026-03-20"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "10.00",
+    "description": "Duplicate",
+    "category": "Other",
+    "payment_method": "Cash",
+    "expense_date": "2026-03-20",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "CRUD-018-LIST-DUPS",
+   "spec_ref": "Edge case, FR-006",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-03"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "10.00",
+     "description": "Duplicate",
+     "category": "Other",
+     "payment_method": "Cash",
+     "expense_date": "2026-03-20",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "10.00",
+     "description": "Duplicate",
+     "category": "Other",
+     "payment_method": "Cash",
+     "expense_date": "2026-03-20",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ],
+   "note": "Exactly two rows: one POST creates at most one expense."
+  },
+  {
+   "id": "CRUD-019-SUM-DUPS",
+   "spec_ref": "FR-034",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-03"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-03",
+    "total_spent": "20.00",
+    "expense_count": 2,
+    "total_recorded_count": 80,
+    "by_category": [
+     {
+      "category": "Other",
+      "total": "20.00",
+      "count": 2
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "Two identical expenses of 10.00 (Other): total 20.00, count 2."
+  }
+ ]
+}

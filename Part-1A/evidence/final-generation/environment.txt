@@ -1,0 +1,11 @@
+Tool versions only. No environment variable values are recorded.
+OS: Microsoft Windows 11 Pro 10.0.26100
+PowerShell: 5.1.26100.9711
+Python: Python 3.12.6
+ruff: ruff 0.17.5
+pytest: pytest 9.2.0
+bandit: __main__.py 1.9.4
+coverage: Coverage.py, version 7.17.3 with C extension
+Node: v24.14.0
+Yarn: 1.22.22
+git: git version 2.47.0.windows.2

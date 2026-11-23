@@ -1,0 +1,22 @@
+{
+ "suite": "timing",
+ "description": "Supplementary HTTP timing with 1,000 expenses; correctness is checked, time is only recorded",
+ "cases": [
+  {
+   "id": "TIM-001",
+   "spec_ref": "SC-005 (informational only; SC-005a is measured by a person, SC-005b in process)",
+   "phase": "timing",
+   "kind": "supplementary",
+   "type": "timing",
+   "params": {
+    "count": 1000,
+    "amount": "1.00",
+    "expense_date": "2025-02-15",
+    "month": "2025-02",
+    "baseline_total": 94,
+    "expected_month_total": "1000.00"
+   },
+   "note": "Creates 1,000 expenses in 2025-02, then lists all and loads the 2025-02 summary. Records elapsed_ms only; no time limit decides a status."
+  }
+ ]
+}

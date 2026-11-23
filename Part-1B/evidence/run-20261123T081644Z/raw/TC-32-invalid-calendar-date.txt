@@ -1,0 +1,7 @@
+{
+  "intent": "CLARIFY",
+  "title": null,
+  "reminder_reference": null,
+  "scheduled_at": null,
+  "clarification": "The date provided (2026-02-30) is invalid. Could you please provide a valid date and time?"
+}

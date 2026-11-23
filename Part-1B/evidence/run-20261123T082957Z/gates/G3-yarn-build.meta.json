@@ -1,0 +1,7 @@
+﻿{
+    "gate":  "G3-yarn-build",
+    "command":  "cmd.exe /c yarn build",
+    "exit_code":  0,
+    "started_utc":  "2026-11-23T08:30:08Z",
+    "finished_utc":  "2026-11-23T08:30:11Z"
+}

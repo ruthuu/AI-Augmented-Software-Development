@@ -1,0 +1,11 @@
+{
+    "id":  "G2-ruff-format",
+    "kind":  "required",
+    "command":  "ruff format --check backend",
+    "working_directory":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1A",
+    "start_utc":  "2026-11-20T15:57:38Z",
+    "end_utc":  "2026-11-20T15:57:38Z",
+    "exit_code":  "0",
+    "status":  "PASS",
+    "reason":  "exit code 0"
+}

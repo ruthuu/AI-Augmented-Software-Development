@@ -1,0 +1,2 @@
+started=2026-11-21T07:34:36Z phase=verify base_url=http://127.0.0.1:54992
+compared=25 passed=25 failed=0 error=0

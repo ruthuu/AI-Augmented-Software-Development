@@ -1,0 +1,280 @@
+{
+    "run_folder":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1A\\evidence\\post-freeze-final",
+    "mode":  "full",
+    "started_utc":  "2026-11-21T07:04:41Z",
+    "finished_utc":  "2026-11-21T07:07:43Z",
+    "counts":  {
+                   "required":  {
+                                    "PASS":  13,
+                                    "FAIL":  1,
+                                    "ERROR":  0,
+                                    "NOT RUN":  0
+                                },
+                   "supplementary":  {
+                                         "PASS":  1,
+                                         "FAIL":  1,
+                                         "ERROR":  0,
+                                         "NOT RUN":  0
+                                     }
+               },
+    "api_results_file":  "api-results.json",
+    "self_test":  null,
+    "checks":  [
+                   {
+                       "id":  "G1-ruff-check",
+                       "kind":  "required",
+                       "command":  "ruff check backend",
+                       "status":  "PASS",
+                       "exit_code":  "0",
+                       "reason":  "exit code 0",
+                       "start_utc":  "2026-11-21T07:04:41Z",
+                       "end_utc":  "2026-11-21T07:04:42Z",
+                       "files":  [
+                                     "G1-ruff-check.stdout.txt",
+                                     "G1-ruff-check.stderr.txt",
+                                     "G1-ruff-check.exitcode.txt",
+                                     "G1-ruff-check.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "G2-ruff-format",
+                       "kind":  "required",
+                       "command":  "ruff format --check backend",
+                       "status":  "PASS",
+                       "exit_code":  "0",
+                       "reason":  "exit code 0",
+                       "start_utc":  "2026-11-21T07:04:42Z",
+                       "end_utc":  "2026-11-21T07:04:43Z",
+                       "files":  [
+                                     "G2-ruff-format.stdout.txt",
+                                     "G2-ruff-format.stderr.txt",
+                                     "G2-ruff-format.exitcode.txt",
+                                     "G2-ruff-format.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "G3-bandit",
+                       "kind":  "required",
+                       "command":  "bandit -r backend/app -ll",
+                       "status":  "PASS",
+                       "exit_code":  "0",
+                       "reason":  "exit code 0",
+                       "start_utc":  "2026-11-21T07:04:43Z",
+                       "end_utc":  "2026-11-21T07:04:44Z",
+                       "files":  [
+                                     "G3-bandit.stdout.txt",
+                                     "G3-bandit.stderr.txt",
+                                     "G3-bandit.exitcode.txt",
+                                     "G3-bandit.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "G4-pytest",
+                       "kind":  "required",
+                       "command":  "pytest backend",
+                       "status":  "PASS",
+                       "exit_code":  "0",
+                       "reason":  "430 tests passed",
+                       "start_utc":  "2026-11-21T07:04:45Z",
+                       "end_utc":  "2026-11-21T07:05:16Z",
+                       "files":  [
+                                     "G4-pytest.stdout.txt",
+                                     "G4-pytest.stderr.txt",
+                                     "G4-pytest.exitcode.txt",
+                                     "G4-pytest.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "G5-coverage",
+                       "kind":  "required",
+                       "command":  "pytest backend --cov=app --cov-fail-under=80",
+                       "status":  "PASS",
+                       "exit_code":  "0",
+                       "reason":  "430 tests passed and a coverage percentage was reported",
+                       "start_utc":  "2026-11-21T07:05:16Z",
+                       "end_utc":  "2026-11-21T07:05:57Z",
+                       "files":  [
+                                     "G5-coverage.stdout.txt",
+                                     "G5-coverage.stderr.txt",
+                                     "G5-coverage.exitcode.txt",
+                                     "G5-coverage.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "G6-core-services-coverage",
+                       "kind":  "required",
+                       "command":  "coverage report --include=*/app/services/*,*/app/core/* --fail-under=90",
+                       "status":  "PASS",
+                       "exit_code":  "0",
+                       "reason":  "coverage percentage reported and threshold met",
+                       "start_utc":  "2026-11-21T07:05:57Z",
+                       "end_utc":  "2026-11-21T07:05:58Z",
+                       "files":  [
+                                     "G6-core-services-coverage.stdout.txt",
+                                     "G6-core-services-coverage.stderr.txt",
+                                     "G6-core-services-coverage.exitcode.txt",
+                                     "G6-core-services-coverage.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "G7-float-scan",
+                       "kind":  "required",
+                       "command":  "python harness\\scan_repo.py float",
+                       "status":  "PASS",
+                       "exit_code":  "0",
+                       "reason":  "13 files scanned, no findings",
+                       "start_utc":  "2026-11-21T07:05:58Z",
+                       "end_utc":  "2026-11-21T07:05:59Z",
+                       "files":  [
+                                     "G7-float-scan.stdout.txt",
+                                     "G7-float-scan.stderr.txt",
+                                     "G7-float-scan.exitcode.txt",
+                                     "G7-float-scan.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "G9-tracked-files",
+                       "kind":  "required",
+                       "command":  "python harness\\scan_repo.py tracked-files",
+                       "status":  "PASS",
+                       "exit_code":  "0",
+                       "reason":  "no tracked .env or *.db file",
+                       "start_utc":  "2026-11-21T07:05:59Z",
+                       "end_utc":  "2026-11-21T07:06:00Z",
+                       "files":  [
+                                     "G9-tracked-files.stdout.txt",
+                                     "G9-tracked-files.stderr.txt",
+                                     "G9-tracked-files.exitcode.txt",
+                                     "G9-tracked-files.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "G9-secret-patterns",
+                       "kind":  "supplementary",
+                       "command":  "python harness\\scan_repo.py secret-patterns",
+                       "status":  "FAIL",
+                       "exit_code":  "1",
+                       "reason":  "the scan reported findings (file, line, and rule only; see stdout)",
+                       "start_utc":  "2026-11-21T07:06:00Z",
+                       "end_utc":  "2026-11-21T07:06:01Z",
+                       "files":  [
+                                     "G9-secret-patterns.stdout.txt",
+                                     "G9-secret-patterns.stderr.txt",
+                                     "G9-secret-patterns.exitcode.txt",
+                                     "G9-secret-patterns.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "G8-yarn-build",
+                       "kind":  "required",
+                       "command":  "yarn build (in frontend)",
+                       "status":  "PASS",
+                       "exit_code":  "0",
+                       "reason":  "exit code 0",
+                       "start_utc":  "2026-11-21T07:06:01Z",
+                       "end_utc":  "2026-11-21T07:06:06Z",
+                       "files":  [
+                                     "G8-yarn-build.stdout.txt",
+                                     "G8-yarn-build.stderr.txt",
+                                     "G8-yarn-build.exitcode.txt",
+                                     "G8-yarn-build.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "FE-yarn-lint",
+                       "kind":  "required",
+                       "command":  "yarn lint (in frontend)",
+                       "status":  "PASS",
+                       "exit_code":  "0",
+                       "reason":  "exit code 0",
+                       "start_utc":  "2026-11-21T07:06:06Z",
+                       "end_utc":  "2026-11-21T07:06:08Z",
+                       "files":  [
+                                     "FE-yarn-lint.stdout.txt",
+                                     "FE-yarn-lint.stderr.txt",
+                                     "FE-yarn-lint.exitcode.txt",
+                                     "FE-yarn-lint.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "FE-yarn-test",
+                       "kind":  "required",
+                       "command":  "yarn test (in frontend)",
+                       "status":  "FAIL",
+                       "exit_code":  "1",
+                       "reason":  "exit code 1",
+                       "start_utc":  "2026-11-21T07:06:08Z",
+                       "end_utc":  "2026-11-21T07:06:43Z",
+                       "files":  [
+                                     "FE-yarn-test.stdout.txt",
+                                     "FE-yarn-test.stderr.txt",
+                                     "FE-yarn-test.exitcode.txt",
+                                     "FE-yarn-test.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "API-write",
+                       "kind":  "required",
+                       "command":  "python harness\\run_api_checks.py --base-url http://127.0.0.1:53287 --phase write --out api-results.json",
+                       "status":  "PASS",
+                       "exit_code":  "0",
+                       "reason":  "242 cases compared and all matched",
+                       "start_utc":  "2026-11-21T07:06:45Z",
+                       "end_utc":  "2026-11-21T07:06:51Z",
+                       "files":  [
+                                     "API-write.stdout.txt",
+                                     "API-write.stderr.txt",
+                                     "API-write.exitcode.txt",
+                                     "API-write.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "API-verify",
+                       "kind":  "required",
+                       "command":  "python harness\\run_api_checks.py --base-url http://127.0.0.1:53287 --phase verify --out api-results.json --append",
+                       "status":  "PASS",
+                       "exit_code":  "0",
+                       "reason":  "25 cases compared and all matched",
+                       "start_utc":  "2026-11-21T07:06:55Z",
+                       "end_utc":  "2026-11-21T07:06:56Z",
+                       "files":  [
+                                     "API-verify.stdout.txt",
+                                     "API-verify.stderr.txt",
+                                     "API-verify.exitcode.txt",
+                                     "API-verify.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "API-timing",
+                       "kind":  "supplementary",
+                       "command":  "python harness\\run_api_checks.py --base-url http://127.0.0.1:53287 --phase timing --out api-results.json --append",
+                       "status":  "PASS",
+                       "exit_code":  "0",
+                       "reason":  "1 cases compared and all matched",
+                       "start_utc":  "2026-11-21T07:06:56Z",
+                       "end_utc":  "2026-11-21T07:07:29Z",
+                       "files":  [
+                                     "API-timing.stdout.txt",
+                                     "API-timing.stderr.txt",
+                                     "API-timing.exitcode.txt",
+                                     "API-timing.meta.json"
+                                 ]
+                   },
+                   {
+                       "id":  "evidence-secret-scan",
+                       "kind":  "required",
+                       "command":  "python harness\\scan_repo.py secret-patterns --path \u003crun folder\u003e",
+                       "status":  "PASS",
+                       "exit_code":  "0",
+                       "reason":  "68 files scanned, no findings",
+                       "start_utc":  "2026-11-21T07:07:43Z",
+                       "end_utc":  "2026-11-21T07:07:43Z",
+                       "files":  [
+                                     "evidence-secret-scan.stdout.txt",
+                                     "evidence-secret-scan.stderr.txt",
+                                     "evidence-secret-scan.exitcode.txt",
+                                     "evidence-secret-scan.meta.json"
+                                 ]
+                   }
+               ]
+}

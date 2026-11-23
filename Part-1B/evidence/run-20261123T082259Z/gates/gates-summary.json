@@ -1,0 +1,58 @@
+﻿[
+    {
+        "gate":  "G1-ruff-check",
+        "command":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1B\\.venv\\Scripts\\python.exe -m ruff check backend harness",
+        "exit_code":  0,
+        "started_utc":  "2026-11-23T08:22:59Z",
+        "finished_utc":  "2026-11-23T08:23:00Z"
+    },
+    {
+        "gate":  "G2-pytest-backend",
+        "command":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1B\\.venv\\Scripts\\python.exe -m pytest backend/tests -q",
+        "exit_code":  0,
+        "started_utc":  "2026-11-23T08:23:00Z",
+        "finished_utc":  "2026-11-23T08:23:14Z"
+    },
+    {
+        "gate":  "G2-pytest-harness",
+        "command":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1B\\.venv\\Scripts\\python.exe -m pytest harness/tests -q",
+        "exit_code":  0,
+        "started_utc":  "2026-11-23T08:23:14Z",
+        "finished_utc":  "2026-11-23T08:23:28Z"
+    },
+    {
+        "gate":  "G3-yarn-lint",
+        "command":  "cmd.exe /c yarn lint",
+        "exit_code":  0,
+        "started_utc":  "2026-11-23T08:23:28Z",
+        "finished_utc":  "2026-11-23T08:23:32Z"
+    },
+    {
+        "gate":  "G3-yarn-build",
+        "command":  "cmd.exe /c yarn build",
+        "exit_code":  0,
+        "started_utc":  "2026-11-23T08:23:32Z",
+        "finished_utc":  "2026-11-23T08:23:39Z"
+    },
+    {
+        "gate":  "G4-evaluation",
+        "command":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1B\\.venv\\Scripts\\python.exe harness/run_eval.py --run-dir \"C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1B\\evidence\\run-20261123T082259Z\" --delay 4",
+        "exit_code":  1,
+        "started_utc":  "2026-11-23T08:23:39Z",
+        "finished_utc":  "2026-11-23T08:26:32Z"
+    },
+    {
+        "gate":  "G5-secret-scan",
+        "command":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1B\\.venv\\Scripts\\python.exe harness/scan_secrets.py --root \"C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1B\\evidence\\run-20261123T082259Z\"",
+        "exit_code":  0,
+        "started_utc":  "2026-11-23T08:26:32Z",
+        "finished_utc":  "2026-11-23T08:26:33Z"
+    },
+    {
+        "gate":  "G5-secret-scan-repo",
+        "command":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1B\\.venv\\Scripts\\python.exe harness/scan_secrets.py",
+        "exit_code":  0,
+        "started_utc":  "2026-11-23T08:26:33Z",
+        "finished_utc":  "2026-11-23T08:26:36Z"
+    }
+]

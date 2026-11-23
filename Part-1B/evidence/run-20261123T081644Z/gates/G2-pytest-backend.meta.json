@@ -1,0 +1,7 @@
+﻿{
+    "gate":  "G2-pytest-backend",
+    "command":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1B\\.venv\\Scripts\\python.exe -m pytest backend/tests -q",
+    "exit_code":  0,
+    "started_utc":  "2026-11-23T08:16:48Z",
+    "finished_utc":  "2026-11-23T08:17:00Z"
+}

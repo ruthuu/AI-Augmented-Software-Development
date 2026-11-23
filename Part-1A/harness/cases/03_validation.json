@@ -1,0 +1,2382 @@
+{
+ "suite": "validation",
+ "description": "Accepted and rejected values with the exact messages from data-model.md",
+ "cases": [
+  {
+   "id": "VAL-AMT-OK01",
+   "spec_ref": "FR-007, FR-008, FR-009",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "0.01",
+     "description": "Amount accepted 0.01",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "0.01",
+    "description": "Amount accepted 0.01",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; returned amount is 0.01."
+  },
+  {
+   "id": "VAL-AMT-OK02",
+   "spec_ref": "FR-007, FR-008, FR-009",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "12",
+     "description": "Amount accepted 12",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "12.00",
+    "description": "Amount accepted 12",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; returned amount is 12.00."
+  },
+  {
+   "id": "VAL-AMT-OK03",
+   "spec_ref": "FR-007, FR-008, FR-009",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "12.5",
+     "description": "Amount accepted 12.5",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "12.50",
+    "description": "Amount accepted 12.5",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; returned amount is 12.50."
+  },
+  {
+   "id": "VAL-AMT-OK04",
+   "spec_ref": "FR-007, FR-008, FR-009",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "12.50",
+     "description": "Amount accepted 12.50",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "12.50",
+    "description": "Amount accepted 12.50",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; returned amount is 12.50."
+  },
+  {
+   "id": "VAL-AMT-OK05",
+   "spec_ref": "FR-007, FR-008, FR-009",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "9999999.99",
+     "description": "Amount accepted 9999999.99",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "9999999.99",
+    "description": "Amount accepted 9999999.99",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; returned amount is 9999999.99."
+  },
+  {
+   "id": "VAL-AMT-OK06",
+   "spec_ref": "FR-007, FR-008, FR-009",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "1000000",
+     "description": "Amount accepted 1000000",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "1000000.00",
+    "description": "Amount accepted 1000000",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; returned amount is 1000000.00."
+  },
+  {
+   "id": "VAL-AMT-BAD01",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Amount is required"
+     }
+    ]
+   },
+   "note": "amount '': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD02",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "abc",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Enter a valid amount"
+     }
+    ]
+   },
+   "note": "amount 'abc': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD03",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "12.",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Enter a valid amount"
+     }
+    ]
+   },
+   "note": "amount '12.': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD04",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": ".5",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Enter a valid amount"
+     }
+    ]
+   },
+   "note": "amount '.5': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD05",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "1,000",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Enter a valid amount"
+     }
+    ]
+   },
+   "note": "amount '1,000': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD06",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "1e3",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Enter a valid amount"
+     }
+    ]
+   },
+   "note": "amount '1e3': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD07",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "12abc",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Enter a valid amount"
+     }
+    ]
+   },
+   "note": "amount '12abc': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD08",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "--5",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Enter a valid amount"
+     }
+    ]
+   },
+   "note": "amount '--5': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD09",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "0",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Amount must be greater than zero"
+     }
+    ]
+   },
+   "note": "amount '0': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD10",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "0.00",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Amount must be greater than zero"
+     }
+    ]
+   },
+   "note": "amount '0.00': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD11",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "-5",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Amount must be greater than zero"
+     }
+    ]
+   },
+   "note": "amount '-5': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD12",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "-0.01",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Amount must be greater than zero"
+     }
+    ]
+   },
+   "note": "amount '-0.01': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD13",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "-0.001",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Amount must be greater than zero"
+     }
+    ]
+   },
+   "note": "amount '-0.001': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD14",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "12.345",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Amount can have at most 2 decimal places"
+     }
+    ]
+   },
+   "note": "amount '12.345': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD15",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "12.999",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Amount can have at most 2 decimal places"
+     }
+    ]
+   },
+   "note": "amount '12.999': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD16",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "0.005",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Amount can have at most 2 decimal places"
+     }
+    ]
+   },
+   "note": "amount '0.005': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD17",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "0.001",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Amount can have at most 2 decimal places"
+     }
+    ]
+   },
+   "note": "amount '0.001': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD18",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "9999999.995",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Amount can have at most 2 decimal places"
+     }
+    ]
+   },
+   "note": "amount '9999999.995': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD19",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "10000000.005",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Amount can have at most 2 decimal places"
+     }
+    ]
+   },
+   "note": "amount '10000000.005': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD20",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "10000000.00",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Amount cannot exceed 9,999,999.99"
+     }
+    ]
+   },
+   "note": "amount '10000000.00': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD21",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "10000000.01",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Amount cannot exceed 9,999,999.99"
+     }
+    ]
+   },
+   "note": "amount '10000000.01': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-AMT-BAD22",
+   "spec_ref": "FR-007, FR-008, FR-009, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "99999999999999999999.99",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Amount cannot exceed 9,999,999.99"
+     }
+    ]
+   },
+   "note": "amount '99999999999999999999.99': rejected, never rounded, nothing stored."
+  },
+  {
+   "id": "VAL-DESC-OK01",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "250.50",
+    "description": "Lunch",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; the response description is the cleaned text."
+  },
+  {
+   "id": "VAL-DESC-OK02",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "  Lunch with spaces  ",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "250.50",
+    "description": "Lunch with spaces",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; the response description is the cleaned text."
+  },
+  {
+   "id": "VAL-DESC-OK03",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Tom\tJerry",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "250.50",
+    "description": "Tom Jerry",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; the response description is the cleaned text."
+  },
+  {
+   "id": "VAL-DESC-OK04",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Tom\nJerry",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "250.50",
+    "description": "Tom Jerry",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; the response description is the cleaned text."
+  },
+  {
+   "id": "VAL-DESC-OK05",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Tom\r\nJerry",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "250.50",
+    "description": "Tom  Jerry",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; the response description is the cleaned text."
+  },
+  {
+   "id": "VAL-DESC-OK06",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "ab\u0000c",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "250.50",
+    "description": "abc",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; the response description is the cleaned text."
+  },
+  {
+   "id": "VAL-DESC-OK07",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "a\u007fb",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "250.50",
+    "description": "ab",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; the response description is the cleaned text."
+  },
+  {
+   "id": "VAL-DESC-OK08",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "\u0007bell",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "250.50",
+    "description": "bell",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; the response description is the cleaned text."
+  },
+  {
+   "id": "VAL-DESC-OK09",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "<b>Tom & \"Jerry's\"</b>",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "250.50",
+    "description": "<b>Tom & \"Jerry's\"</b>",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; the response description is the cleaned text."
+  },
+  {
+   "id": "VAL-DESC-OK10",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "x'); DROP TABLE expenses;--",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "250.50",
+    "description": "x'); DROP TABLE expenses;--",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; the response description is the cleaned text."
+  },
+  {
+   "id": "VAL-DESC-OK11",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Caf\u00e9 \u20b9 \u65e5\u672c\u8a9e \ud83d\ude00",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "250.50",
+    "description": "Caf\u00e9 \u20b9 \u65e5\u672c\u8a9e \ud83d\ude00",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; the response description is the cleaned text."
+  },
+  {
+   "id": "VAL-DESC-OK12",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "250.50",
+    "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; the response description is the cleaned text."
+  },
+  {
+   "id": "VAL-DESC-OK13",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "250.50",
+    "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; the response description is the cleaned text."
+  },
+  {
+   "id": "VAL-DESC-OK14",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "250.50",
+    "description": "\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-02-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Accepted; the response description is the cleaned text."
+  },
+  {
+   "id": "VAL-DESC-BAD01",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "description",
+      "message": "Description is required"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DESC-BAD02",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "   ",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "description",
+      "message": "Description is required"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DESC-BAD03",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "\t\n",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "description",
+      "message": "Description is required"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DESC-BAD04",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "\u0000",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "description",
+      "message": "Description is required"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DESC-BAD05",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "\u0007 \u007f",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "description",
+      "message": "Description is required"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DESC-BAD06",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "description",
+      "message": "Description cannot exceed 200 characters"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DESC-BAD07",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\u0007x",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "description",
+      "message": "Description cannot exceed 200 characters"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DESC-BAD08",
+   "spec_ref": "FR-010, FR-042",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "description",
+      "message": "Description cannot exceed 200 characters"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-CAT-BAD01",
+   "spec_ref": "FR-012",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "category",
+      "message": "Select a valid category"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-CAT-BAD02",
+   "spec_ref": "FR-012",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "FOOD",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "category",
+      "message": "Select a valid category"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-CAT-BAD03",
+   "spec_ref": "FR-012",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Groceries",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "category",
+      "message": "Select a valid category"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-CAT-BAD04",
+   "spec_ref": "FR-012",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Other2",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "category",
+      "message": "Select a valid category"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-CAT-BAD05",
+   "spec_ref": "FR-012",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food,Bills",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "category",
+      "message": "Select a valid category"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-PM-BAD01",
+   "spec_ref": "FR-013",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "payment_method",
+      "message": "Payment method is required"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-PM-BAD02",
+   "spec_ref": "FR-013",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "upi",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "payment_method",
+      "message": "Select a valid payment method"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-PM-BAD03",
+   "spec_ref": "FR-013",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "Wallet",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "payment_method",
+      "message": "Select a valid payment method"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-PM-BAD04",
+   "spec_ref": "FR-013",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "Credit  Card",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "payment_method",
+      "message": "Select a valid payment method"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-PM-BAD05",
+   "spec_ref": "FR-013",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "Debit card",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "payment_method",
+      "message": "Select a valid payment method"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DATE-OK01",
+   "spec_ref": "FR-011",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Date accepted 2000-01-01",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2000-01-01"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "250.50",
+    "description": "Date accepted 2000-01-01",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2000-01-01",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Earliest allowed date and a real leap day."
+  },
+  {
+   "id": "VAL-DATE-OK02",
+   "spec_ref": "FR-011",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Date accepted 2024-02-29",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2024-02-29"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "250.50",
+    "description": "Date accepted 2024-02-29",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2024-02-29",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   },
+   "note": "Earliest allowed date and a real leap day."
+  },
+  {
+   "id": "VAL-DATE-BAD01",
+   "spec_ref": "FR-011",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-30"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "expense_date",
+      "message": "Enter a valid date"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DATE-BAD02",
+   "spec_ref": "FR-011",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-13-01"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "expense_date",
+      "message": "Enter a valid date"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DATE-BAD03",
+   "spec_ref": "FR-011",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-00-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "expense_date",
+      "message": "Enter a valid date"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DATE-BAD04",
+   "spec_ref": "FR-011",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "26-11-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "expense_date",
+      "message": "Enter a valid date"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DATE-BAD05",
+   "spec_ref": "FR-011",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026/11/10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "expense_date",
+      "message": "Enter a valid date"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DATE-BAD06",
+   "spec_ref": "FR-011",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "abc"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "expense_date",
+      "message": "Enter a valid date"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DATE-BAD07",
+   "spec_ref": "FR-011",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "10-11-2026"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "expense_date",
+      "message": "Enter a valid date"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DATE-BAD08",
+   "spec_ref": "FR-011",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2025-02-29"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "expense_date",
+      "message": "Enter a valid date"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DATE-BAD09",
+   "spec_ref": "FR-011",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-31"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "expense_date",
+      "message": "Enter a valid date"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DATE-BAD10",
+   "spec_ref": "FR-011",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-1-5"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "expense_date",
+      "message": "Enter a valid date"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DATE-OLD01",
+   "spec_ref": "FR-011",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "1999-12-31"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "expense_date",
+      "message": "Date cannot be before 01 Jan 2000"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DATE-OLD02",
+   "spec_ref": "FR-011",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "1900-01-01"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "expense_date",
+      "message": "Date cannot be before 01 Jan 2000"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-DATE-FUT01",
+   "spec_ref": "FR-011, FR-041",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-13"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "expense_date",
+      "message": "Date cannot be in the future"
+     }
+    ]
+   },
+   "note": "Today is 2026-11-12; 2026-11-12 itself is accepted in the dataset (DS-C-N14)."
+  },
+  {
+   "id": "VAL-DATE-FUT02",
+   "spec_ref": "FR-011, FR-041",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-12-01"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "expense_date",
+      "message": "Date cannot be in the future"
+     }
+    ]
+   },
+   "note": "Today is 2026-11-12; 2026-11-12 itself is accepted in the dataset (DS-C-N14)."
+  },
+  {
+   "id": "VAL-DATE-FUT03",
+   "spec_ref": "FR-011, FR-041",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2999-01-01"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "expense_date",
+      "message": "Date cannot be in the future"
+     }
+    ]
+   },
+   "note": "Today is 2026-11-12; 2026-11-12 itself is accepted in the dataset (DS-C-N14)."
+  },
+  {
+   "id": "VAL-MULTI-EMPTY",
+   "spec_ref": "FR-014, US1 scenario 8",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {}
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": {
+     "$unordered": [
+      {
+       "field": "amount",
+       "message": "Amount is required"
+      },
+      {
+       "field": "description",
+       "message": "Description is required"
+      },
+      {
+       "field": "category",
+       "message": "Category is required"
+      },
+      {
+       "field": "payment_method",
+       "message": "Payment method is required"
+      },
+      {
+       "field": "expense_date",
+       "message": "Date is required"
+      }
+     ]
+    }
+   },
+   "note": "One error per missing field, all returned together."
+  },
+  {
+   "id": "VAL-MULTI-ALL-BAD",
+   "spec_ref": "FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "abc",
+     "description": "  ",
+     "category": "X",
+     "payment_method": "Y",
+     "expense_date": "2026-02-30"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": {
+     "$unordered": [
+      {
+       "field": "amount",
+       "message": "Enter a valid amount"
+      },
+      {
+       "field": "description",
+       "message": "Description is required"
+      },
+      {
+       "field": "category",
+       "message": "Select a valid category"
+      },
+      {
+       "field": "payment_method",
+       "message": "Select a valid payment method"
+      },
+      {
+       "field": "expense_date",
+       "message": "Enter a valid date"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "VAL-MULTI-TWO",
+   "spec_ref": "FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "0",
+     "description": "Lunch",
+     "category": "Nope",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": {
+     "$unordered": [
+      {
+       "field": "amount",
+       "message": "Amount must be greater than zero"
+      },
+      {
+       "field": "category",
+       "message": "Select a valid category"
+      }
+     ]
+    }
+   },
+   "note": "Only the failing fields are reported."
+  },
+  {
+   "id": "VAL-BODY-MALFORMED",
+   "spec_ref": "contracts/api.md Conventions, data-model.md request body",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "raw_body": "{not json"
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "body",
+      "message": "Request body must be valid JSON"
+     }
+    ]
+   }
+  },
+  {
+   "id": "VAL-BODY-UNKNOWN",
+   "spec_ref": "contracts/api.md Conventions, data-model.md request body",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "250.50",
+     "description": "Lunch",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-02-10",
+     "color": "red"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "color",
+      "message": "Unknown field"
+     }
+    ]
+   }
+  }
+ ]
+}

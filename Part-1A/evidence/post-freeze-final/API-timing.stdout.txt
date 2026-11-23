@@ -1,0 +1,2 @@
+started=2026-11-21T07:07:29Z phase=timing base_url=http://127.0.0.1:53287
+compared=1 passed=1 failed=0 error=0

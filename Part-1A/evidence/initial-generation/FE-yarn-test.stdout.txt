@@ -1,0 +1,77 @@
+yarn run v1.22.22
+$ vitest run
+
+ RUN  v5.1.0 C:/Users/rruthu/Documents/AIAugmentedSDLC/assignment-1/Part-1A/frontend
+
+ ✓ src/utils/month.test.ts (12 tests) 14ms
+ ✓ src/components/dashboard/SummaryCards.test.tsx (3 tests) 288ms
+ ✓ src/components/budget/OverBudgetAlert.test.tsx (3 tests) 1662ms
+   ✓ OverBudgetAlert (3)
+     ✓ is an alert stating the amount by which the budget is exceeded 1385ms
+ ✓ src/components/dashboard/CategoryBreakdown.test.tsx (3 tests) 1596ms
+   ✓ CategoryBreakdown (3)
+     ✓ lists each category with its total in the given order 1571ms
+ ✓ src/api/client.test.ts (8 tests) 36ms
+ ✓ src/components/common/ConfirmDialog.test.tsx (5 tests) 3007ms
+   ✓ ConfirmDialog (5)
+     ✓ is a labelled dialog 1188ms
+     ✓ calls onConfirm from the confirm button 545ms
+     ✓ calls onCancel from the cancel button 406ms
+     ✓ keeps keyboard focus inside the dialog 725ms
+ ✓ src/components/budget/BudgetPanel.test.tsx (8 tests) 4761ms
+   ✓ BudgetPanel (8)
+     ✓ shows Spent and Remaining for a month with a budget and no warning 306ms
+     ✓ shows the overage warning and Remaining 0.00 when over budget 1135ms
+     ✓ saves the typed budget with one submission and refreshes 1293ms
+     ✓ shows the backend message beside the field and does not refresh 744ms
+     ✓ shows a network failure as an error and keeps the value 601ms
+     ✓ ignores a second click while saving 404ms
+ ✓ src/components/expenses/ExpenseFilters.test.tsx (10 tests) 4026ms
+   ✓ ExpenseFilters (3)
+     ✓ reports a chosen month 312ms
+     ✓ reports a chosen category and offers All 1644ms
+   ✓ ExpensesSection filtering (7)
+     ✓ shows the no-match message with a clear action that lists everything again 386ms
+     ✓ selecting All and clearing the month lists everything again 462ms
+ ✓ src/components/expenses/ExpenseList.test.tsx (11 tests) 6096ms
+   ✓ ExpenseList display (3)
+     ✓ shows amount, date, and fields in the display format 343ms
+     ✓ keeps the order it is given 934ms
+   ✓ ExpensesSection (8)
+     ✓ deletes after confirmation: choose Delete (1), confirm (2) 518ms
+     ✓ keeps the expense when the delete is cancelled 523ms
+     ✓ shows the server message and refreshes when the expense no longer exists 657ms
+     ✓ adds with two interactions: open the form (1), submit (2) 1466ms
+     ✓ edits with two interactions: open the form (1), submit (2) 894ms
+ ✓ src/utils/formatMoney.test.ts (10 tests) 13ms
+ ✓ src/App.test.tsx (10 tests) 6272ms
+   ✓ App shell (4)
+     ✓ shows a loading indicator while the configuration loads 956ms
+     ✓ shows the shell with the backend date once the configuration has loaded 539ms
+     ✓ shows an error with a retry when the configuration cannot be loaded 339ms
+   ✓ refresh after a change (SC-004) (6)
+     ✓ fetches the list and the summary again after an expense is added 2356ms
+     ✓ fetches both again after an expense is edited 380ms
+     ✓ fetches both again after an expense is deleted 332ms
+     ✓ fetches both again after a budget is saved 621ms
+     ✓ shows the figures from the new summary after the refetch 544ms
+ ✓ src/utils/formatDate.test.ts (6 tests) 10ms
+ ✓ src/components/expenses/ExpenseForm.test.tsx (10 tests) 9162ms
+   ✓ ExpenseForm (10)
+     ✓ offers exactly the configured categories and payment methods 2462ms
+     ✓ shows backend messages beside the matching fields and keeps the entered values 799ms
+     ✓ submits the typed text without converting it 1611ms
+     ✓ calls the API once when Save is clicked twice quickly 1230ms
+     ✓ keeps the entered values and shows an error when saving fails 1493ms
+     ✓ submits with Enter 944ms
+
+ Test Files  13 passed (13)
+      Tests  99 passed (99)
+   Start at  21:28:43
+   Duration  22.95s (environment 52%, tests 21%, setup 16%, transform 8%, import 3%)
+
+Environment  jsdom was created 13 times · 93.15s total, 52% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+
+Done in 24.44s.

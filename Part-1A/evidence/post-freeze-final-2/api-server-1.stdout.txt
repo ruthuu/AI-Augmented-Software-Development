@@ -1,0 +1,244 @@
+INFO:     127.0.0.1:54993 - "GET /api/config HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /api/config HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "GET /api/config HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55003 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55004 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55005 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55006 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55007 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55008 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55009 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55010 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55011 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55012 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55013 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55015 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55016 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55017 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55018 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55019 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55020 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55021 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55022 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55023 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55024 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55025 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55026 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55027 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55028 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55029 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55030 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55031 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55032 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55033 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55034 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55035 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55036 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55037 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55038 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55039 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55040 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55041 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55042 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55043 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55044 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55045 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55046 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55047 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55048 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55050 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55051 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55052 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55053 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55054 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55055 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55056 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55057 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55058 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55059 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55061 - "GET /api/summary?month=2026-09 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55062 - "GET /api/expenses?month=2026-09 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55063 - "GET /api/summary?month=2026-10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55064 - "GET /api/expenses?month=2026-10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55065 - "GET /api/summary?month=2026-11 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55066 - "GET /api/expenses?month=2026-11 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55067 - "GET /api/summary?month=2026-08 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55068 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55070 - "GET /api/expenses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55071 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55072 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55073 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55074 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55075 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55076 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55077 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55078 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55079 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55080 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55081 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55082 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55083 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55084 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55085 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55086 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55087 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55088 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55089 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55090 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55091 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55092 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55093 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55094 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55095 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55096 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55097 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55098 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55099 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55100 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55101 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55102 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55103 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55104 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55105 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55106 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55107 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55108 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55109 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55110 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55111 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55112 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55113 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55114 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55115 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55116 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55117 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55118 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55119 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55120 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55121 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55122 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55123 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55124 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55125 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55126 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55127 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55128 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55129 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55130 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55131 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55132 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55133 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55134 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55135 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55136 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55137 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55138 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55139 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55140 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55141 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55142 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55143 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55144 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55145 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55146 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55147 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55148 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55149 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55150 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55151 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55152 - "POST /api/expenses HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55153 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55154 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55155 - "GET /api/expenses?month=2026-03 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55156 - "GET /api/summary?month=2026-03 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55157 - "PUT /api/expenses/78 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55158 - "GET /api/expenses?month=2026-03 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55159 - "PUT /api/expenses/78 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55160 - "GET /api/summary?month=2026-03 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55161 - "GET /api/summary?month=2026-04 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55162 - "PUT /api/expenses/9999999 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55163 - "DELETE /api/expenses/79 HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:55164 - "DELETE /api/expenses/79 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55165 - "PUT /api/expenses/79 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55166 - "GET /api/summary?month=2026-03 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55167 - "GET /api/expenses?month=2026-03 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55168 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55169 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55170 - "GET /api/expenses?month=2026-03 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55171 - "GET /api/summary?month=2026-03 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55172 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55173 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55174 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55175 - "GET /api/expenses?month=2025-12 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55176 - "GET /api/expenses?month=2026-01 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55177 - "GET /api/expenses?month=2026-01&category=Food HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55178 - "GET /api/expenses?month=2026-01&category=Transport HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55179 - "GET /api/expenses?month=2026-01&category=Education HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55180 - "GET /api/expenses?month=2020-01 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55181 - "GET /api/expenses?month=2026-09&category=Food HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55182 - "GET /api/expenses?category=Healthcare HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55183 - "GET /api/expenses HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55184 - "GET /api/summary?month=2026-01 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55185 - "GET /api/summary?month=2025-12 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55186 - "GET /api/expenses?month=2026-13 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55187 - "GET /api/expenses?month=abc HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55188 - "GET /api/expenses?month=2026-1 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55189 - "GET /api/expenses?category=Nope HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55190 - "GET /api/expenses?month=2026-13&category=Nope HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55192 - "GET /api/summary?month=abc HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55193 - "GET /api/summary?month=2026-13 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55194 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55195 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55197 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55198 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55199 - "GET /api/summary?month=2025-11 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55200 - "GET /api/summary?month=2026-07 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55201 - "PUT /api/budgets/2026-07 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55202 - "PUT /api/budgets/2026-07 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55204 - "GET /api/summary?month=2026-07 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55205 - "PUT /api/budgets/2026-07 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55206 - "PUT /api/budgets/2026-07 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55207 - "PUT /api/budgets/2026-07 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55208 - "PUT /api/budgets/2026-07 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55209 - "PUT /api/budgets/2026-07 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55210 - "PUT /api/budgets/2026-07 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55211 - "PUT /api/budgets/2026-07 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55212 - "PUT /api/budgets/2026-07 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55213 - "PUT /api/budgets/2026-07 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55214 - "PUT /api/budgets/2026-07 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55215 - "PUT /api/budgets/2026-07 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55216 - "PUT /api/budgets/2026-07 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55217 - "PUT /api/budgets/2026-07 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55218 - "PUT /api/budgets/2026-07 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55219 - "PUT /api/budgets/2026-07 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55220 - "GET /api/summary?month=2026-07 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55221 - "PUT /api/budgets/2026-13 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55222 - "PUT /api/budgets/abc HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55223 - "PUT /api/budgets/2026-1 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55224 - "PUT /api/budgets/2026-00 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55225 - "PUT /api/budgets/26-07 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55226 - "PUT /api/budgets/1999-12 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55227 - "PUT /api/budgets/2099-01 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55228 - "PUT /api/budgets/0001-01 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55229 - "PUT /api/budgets/9999-12 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55230 - "PUT /api/budgets/2026-06 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55231 - "PUT /api/budgets/2026-06 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55232 - "PUT /api/budgets/2026-06 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55233 - "GET /api/summary?month=2026-06 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55234 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55235 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55236 - "GET /api/summary?month=2026-07 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55237 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55238 - "GET /api/summary?month=2026-07 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55239 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55240 - "GET /api/summary?month=2026-07 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55241 - "PUT /api/budgets/2026-07 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55242 - "GET /api/summary?month=2026-07 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55243 - "PUT /api/budgets/2026-07 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55244 - "GET /api/summary?month=2026-07 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55245 - "GET /api/summary?month=2026-09 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55246 - "PUT /api/budgets/2026-05 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55247 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55248 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55249 - "POST /api/expenses HTTP/1.1" 201 Created
+INFO:     127.0.0.1:55250 - "GET /api/summary?month=2026-05 HTTP/1.1" 200 OK

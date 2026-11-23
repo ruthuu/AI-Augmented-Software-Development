@@ -1,0 +1,11 @@
+{
+    "id":  "G3-bandit",
+    "kind":  "required",
+    "command":  "bandit -r backend/app -ll",
+    "working_directory":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1A",
+    "start_utc":  "2026-11-20T16:41:04Z",
+    "end_utc":  "2026-11-20T16:41:05Z",
+    "exit_code":  "0",
+    "status":  "PASS",
+    "reason":  "exit code 0"
+}

@@ -1,0 +1,1307 @@
+{
+ "suite": "budgets",
+ "description": "Budget create, replace, rejection, month rules, and remaining/over-budget arithmetic",
+ "cases": [
+  {
+   "id": "BUD-001-NO-BUDGET",
+   "spec_ref": "FR-027",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-07"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-07",
+    "total_spent": "0.00",
+    "expense_count": 0,
+    "total_recorded_count": 87,
+    "by_category": [],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "No budget and no expenses: total 0.00, count 0, budget null, remaining null, over_budget false."
+  },
+  {
+   "id": "BUD-002-SET",
+   "spec_ref": "FR-023",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "10000.00"
+    }
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-07",
+    "amount": "10000.00",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "BUD-003-REPLACE",
+   "spec_ref": "FR-023",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "12000.00"
+    }
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-07",
+    "amount": "12000.00",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "BUD-004-AFTER-REPLACE",
+   "spec_ref": "FR-023, FR-025",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-07"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-07",
+    "total_spent": "0.00",
+    "expense_count": 0,
+    "total_recorded_count": 87,
+    "by_category": [],
+    "budget": {
+     "month": "2026-07",
+     "amount": "12000.00"
+    },
+    "remaining": "12000.00",
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "Budget replaced by 12000.00; no expenses: remaining 12000.00."
+  },
+  {
+   "id": "BUD-005-RESET",
+   "spec_ref": "FR-023",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "10000.00"
+    }
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-07",
+    "amount": "10000.00",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "BUD-BAD01",
+   "spec_ref": "FR-024, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "0"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Budget must be a number greater than zero"
+     }
+    ]
+   },
+   "note": "budget '0': rejected, never rounded; the saved 10000.00 stays."
+  },
+  {
+   "id": "BUD-BAD02",
+   "spec_ref": "FR-024, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "0.00"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Budget must be a number greater than zero"
+     }
+    ]
+   },
+   "note": "budget '0.00': rejected, never rounded; the saved 10000.00 stays."
+  },
+  {
+   "id": "BUD-BAD03",
+   "spec_ref": "FR-024, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "-100"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Budget must be a number greater than zero"
+     }
+    ]
+   },
+   "note": "budget '-100': rejected, never rounded; the saved 10000.00 stays."
+  },
+  {
+   "id": "BUD-BAD04",
+   "spec_ref": "FR-024, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": ""
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Budget must be a number greater than zero"
+     }
+    ]
+   },
+   "note": "budget '': rejected, never rounded; the saved 10000.00 stays."
+  },
+  {
+   "id": "BUD-BAD05",
+   "spec_ref": "FR-024, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "abc"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Budget must be a number greater than zero"
+     }
+    ]
+   },
+   "note": "budget 'abc': rejected, never rounded; the saved 10000.00 stays."
+  },
+  {
+   "id": "BUD-BAD06",
+   "spec_ref": "FR-024, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "1,000"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Budget must be a number greater than zero"
+     }
+    ]
+   },
+   "note": "budget '1,000': rejected, never rounded; the saved 10000.00 stays."
+  },
+  {
+   "id": "BUD-BAD07",
+   "spec_ref": "FR-024, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "-0.001"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Budget must be a number greater than zero"
+     }
+    ]
+   },
+   "note": "budget '-0.001': rejected, never rounded; the saved 10000.00 stays."
+  },
+  {
+   "id": "BUD-BAD08",
+   "spec_ref": "FR-024, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "12000.999"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Budget can have at most 2 decimal places"
+     }
+    ]
+   },
+   "note": "budget '12000.999': rejected, never rounded; the saved 10000.00 stays."
+  },
+  {
+   "id": "BUD-BAD09",
+   "spec_ref": "FR-024, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "0.005"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Budget can have at most 2 decimal places"
+     }
+    ]
+   },
+   "note": "budget '0.005': rejected, never rounded; the saved 10000.00 stays."
+  },
+  {
+   "id": "BUD-BAD10",
+   "spec_ref": "FR-024, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "99999999.995"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Budget can have at most 2 decimal places"
+     }
+    ]
+   },
+   "note": "budget '99999999.995': rejected, never rounded; the saved 10000.00 stays."
+  },
+  {
+   "id": "BUD-BAD11",
+   "spec_ref": "FR-024, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "100000000.00"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Budget cannot exceed 99,999,999.99"
+     }
+    ]
+   },
+   "note": "budget '100000000.00': rejected, never rounded; the saved 10000.00 stays."
+  },
+  {
+   "id": "BUD-BAD12",
+   "spec_ref": "FR-024, FR-014",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "100000000.01"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "amount",
+      "message": "Budget cannot exceed 99,999,999.99"
+     }
+    ]
+   },
+   "note": "budget '100000000.01': rejected, never rounded; the saved 10000.00 stays."
+  },
+  {
+   "id": "BUD-BAD-JSON",
+   "spec_ref": "contracts/api.md PUT /api/budgets",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "raw_body": "{bad"
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "body",
+      "message": "Request body must be valid JSON"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BUD-BAD-UNKNOWN",
+   "spec_ref": "contracts/api.md PUT /api/budgets",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "500.00",
+     "x": 1
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "x",
+      "message": "Unknown field"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BUD-UNCHANGED",
+   "spec_ref": "FR-024",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-07"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-07",
+    "total_spent": "0.00",
+    "expense_count": 0,
+    "total_recorded_count": 87,
+    "by_category": [],
+    "budget": {
+     "month": "2026-07",
+     "amount": "10000.00"
+    },
+    "remaining": "10000.00",
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "After every rejected request the budget is still 10000.00; remaining 10000.00."
+  },
+  {
+   "id": "BUD-MONTH-BAD01",
+   "spec_ref": "contracts/api.md PUT /api/budgets",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-13",
+    "body": {
+     "amount": "100.00"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "month",
+      "message": "Enter a valid month"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BUD-MONTH-BAD02",
+   "spec_ref": "contracts/api.md PUT /api/budgets",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/abc",
+    "body": {
+     "amount": "100.00"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "month",
+      "message": "Enter a valid month"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BUD-MONTH-BAD03",
+   "spec_ref": "contracts/api.md PUT /api/budgets",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-1",
+    "body": {
+     "amount": "100.00"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "month",
+      "message": "Enter a valid month"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BUD-MONTH-BAD04",
+   "spec_ref": "contracts/api.md PUT /api/budgets",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-00",
+    "body": {
+     "amount": "100.00"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "month",
+      "message": "Enter a valid month"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BUD-MONTH-BAD05",
+   "spec_ref": "contracts/api.md PUT /api/budgets",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/26-07",
+    "body": {
+     "amount": "100.00"
+    }
+   },
+   "expected_status": 422,
+   "expected_body_or_fields": {
+    "code": "validation_error",
+    "message": "$str",
+    "errors": [
+     {
+      "field": "month",
+      "message": "Enter a valid month"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BUD-MONTH-OK01",
+   "spec_ref": "FR-023, data-model.md Monthly Budget",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/1999-12",
+    "body": {
+     "amount": "100.00"
+    }
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "1999-12",
+    "amount": "100.00",
+    "updated_at": "$utc"
+   },
+   "note": "Any real month is valid, including months before 2000 and future months."
+  },
+  {
+   "id": "BUD-MONTH-OK02",
+   "spec_ref": "FR-023, data-model.md Monthly Budget",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2099-01",
+    "body": {
+     "amount": "100.00"
+    }
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2099-01",
+    "amount": "100.00",
+    "updated_at": "$utc"
+   },
+   "note": "Any real month is valid, including months before 2000 and future months."
+  },
+  {
+   "id": "BUD-MONTH-OK03",
+   "spec_ref": "FR-023, data-model.md Monthly Budget",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/0001-01",
+    "body": {
+     "amount": "100.00"
+    }
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "0001-01",
+    "amount": "100.00",
+    "updated_at": "$utc"
+   },
+   "note": "Any real month is valid, including months before 2000 and future months."
+  },
+  {
+   "id": "BUD-MONTH-OK04",
+   "spec_ref": "FR-023, data-model.md Monthly Budget",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/9999-12",
+    "body": {
+     "amount": "100.00"
+    }
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "9999-12",
+    "amount": "100.00",
+    "updated_at": "$utc"
+   },
+   "note": "Any real month is valid, including months before 2000 and future months."
+  },
+  {
+   "id": "BUD-LIMIT-OK01",
+   "spec_ref": "FR-024",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-06",
+    "body": {
+     "amount": "0.01"
+    }
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-06",
+    "amount": "0.01",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "BUD-LIMIT-OK02",
+   "spec_ref": "FR-024",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-06",
+    "body": {
+     "amount": "12000"
+    }
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-06",
+    "amount": "12000.00",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "BUD-LIMIT-OK03",
+   "spec_ref": "FR-024",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-06",
+    "body": {
+     "amount": "99999999.99"
+    }
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-06",
+    "amount": "99999999.99",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "BUD-LIMIT-SUM",
+   "spec_ref": "FR-024",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-06"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-06",
+    "total_spent": "0.00",
+    "expense_count": 0,
+    "total_recorded_count": 87,
+    "by_category": [],
+    "budget": {
+     "month": "2026-06",
+     "amount": "99999999.99"
+    },
+    "remaining": "99999999.99",
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "Last accepted budget for 2026-06 is 99999999.99; no expenses: remaining 99999999.99."
+  },
+  {
+   "id": "BUD-X1",
+   "spec_ref": "FR-025",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "6000.00",
+     "description": "Budget X1",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-07-01"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "6000.00",
+    "description": "Budget X1",
+    "category": "Food",
+    "payment_method": "Cash",
+    "expense_date": "2026-07-01",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "BUD-X2",
+   "spec_ref": "FR-025",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "3999.99",
+     "description": "Budget X2",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-07-31"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "3999.99",
+    "description": "Budget X2",
+    "category": "Transport",
+    "payment_method": "UPI",
+    "expense_date": "2026-07-31",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "BUD-SUM-9999-99",
+   "spec_ref": "FR-025, FR-026, SC-006",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-07"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-07",
+    "total_spent": "9999.99",
+    "expense_count": 2,
+    "total_recorded_count": 89,
+    "by_category": [
+     {
+      "category": "Food",
+      "total": "6000.00",
+      "count": 1
+     },
+     {
+      "category": "Transport",
+      "total": "3999.99",
+      "count": 1
+     }
+    ],
+    "budget": {
+     "month": "2026-07",
+     "amount": "10000.00"
+    },
+    "remaining": "0.01",
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "6000.00 + 3999.99 = 9999.99; remaining = 10000.00 - 9999.99 = 0.01; not over budget."
+  },
+  {
+   "id": "BUD-X3",
+   "spec_ref": "FR-026",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "0.01",
+     "description": "Budget X3",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-07-15"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "0.01",
+    "description": "Budget X3",
+    "category": "Transport",
+    "payment_method": "UPI",
+    "expense_date": "2026-07-15",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "BUD-SUM-EQUAL",
+   "spec_ref": "FR-026, SC-006",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-07"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-07",
+    "total_spent": "10000.00",
+    "expense_count": 3,
+    "total_recorded_count": 90,
+    "by_category": [
+     {
+      "category": "Food",
+      "total": "6000.00",
+      "count": 1
+     },
+     {
+      "category": "Transport",
+      "total": "4000.00",
+      "count": 2
+     }
+    ],
+    "budget": {
+     "month": "2026-07",
+     "amount": "10000.00"
+    },
+    "remaining": "0.00",
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "9999.99 + 0.01 = 10000.00 equals the budget: remaining 0.00, over_budget false, over_budget_by null."
+  },
+  {
+   "id": "BUD-X4",
+   "spec_ref": "FR-026",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "0.01",
+     "description": "Budget X4",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-07-16"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "0.01",
+    "description": "Budget X4",
+    "category": "Transport",
+    "payment_method": "UPI",
+    "expense_date": "2026-07-16",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "BUD-SUM-OVER",
+   "spec_ref": "FR-026, SC-006",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-07"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-07",
+    "total_spent": "10000.01",
+    "expense_count": 4,
+    "total_recorded_count": 91,
+    "by_category": [
+     {
+      "category": "Food",
+      "total": "6000.00",
+      "count": 1
+     },
+     {
+      "category": "Transport",
+      "total": "4000.01",
+      "count": 3
+     }
+    ],
+    "budget": {
+     "month": "2026-07",
+     "amount": "10000.00"
+    },
+    "remaining": "0.00",
+    "over_budget": true,
+    "over_budget_by": "0.01"
+   },
+   "derivation": "10000.00 + 0.01 = 10000.01 exceeds 10000.00 by 0.01: remaining 0.00, over_budget true, over_budget_by 0.01. Transport 3999.99 + 0.01 + 0.01 = 4000.01 (3), Food 6000.00 (1)."
+  },
+  {
+   "id": "BUD-RAISE",
+   "spec_ref": "FR-023, FR-026",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "10000.01"
+    }
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-07",
+    "amount": "10000.01",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "BUD-SUM-RAISED",
+   "spec_ref": "FR-026",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-07"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-07",
+    "total_spent": "10000.01",
+    "expense_count": 4,
+    "total_recorded_count": 91,
+    "by_category": [
+     {
+      "category": "Food",
+      "total": "6000.00",
+      "count": 1
+     },
+     {
+      "category": "Transport",
+      "total": "4000.01",
+      "count": 3
+     }
+    ],
+    "budget": {
+     "month": "2026-07",
+     "amount": "10000.01"
+    },
+    "remaining": "0.00",
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "Budget 10000.01 equals spent 10000.01: remaining 0.00, over_budget false."
+  },
+  {
+   "id": "BUD-BACK",
+   "spec_ref": "FR-023",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-07",
+    "body": {
+     "amount": "10000.00"
+    }
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-07",
+    "amount": "10000.00",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "BUD-SUM-BACK",
+   "spec_ref": "FR-026",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-07"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-07",
+    "total_spent": "10000.01",
+    "expense_count": 4,
+    "total_recorded_count": 91,
+    "by_category": [
+     {
+      "category": "Food",
+      "total": "6000.00",
+      "count": 1
+     },
+     {
+      "category": "Transport",
+      "total": "4000.01",
+      "count": 3
+     }
+    ],
+    "budget": {
+     "month": "2026-07",
+     "amount": "10000.00"
+    },
+    "remaining": "0.00",
+    "over_budget": true,
+    "over_budget_by": "0.01"
+   },
+   "derivation": "Budget back to 10000.00; spent 10000.01: over by 0.01."
+  },
+  {
+   "id": "BUD-OTHER-MONTH",
+   "spec_ref": "FR-023",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-09"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-09",
+    "total_spent": "14824.80",
+    "expense_count": 18,
+    "total_recorded_count": 91,
+    "by_category": [
+     {
+      "category": "Education",
+      "total": "6199.00",
+      "count": 2
+     },
+     {
+      "category": "Shopping",
+      "total": "3799.49",
+      "count": 2
+     },
+     {
+      "category": "Bills",
+      "total": "2849.01",
+      "count": 2
+     },
+     {
+      "category": "Entertainment",
+      "total": "950.00",
+      "count": 2
+     },
+     {
+      "category": "Food",
+      "total": "430.89",
+      "count": 3
+     },
+     {
+      "category": "Healthcare",
+      "total": "396.05",
+      "count": 2
+     },
+     {
+      "category": "Transport",
+      "total": "185.10",
+      "count": 3
+     },
+     {
+      "category": "Other",
+      "total": "15.26",
+      "count": 2
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "A budget belongs to one month only: September 2026 still has no budget."
+  },
+  {
+   "id": "BUD-W-SET",
+   "spec_ref": "FR-025",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "PUT",
+    "path": "/api/budgets/2026-05",
+    "body": {
+     "amount": "10000.00"
+    }
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-05",
+    "amount": "10000.00",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "BUD-W1",
+   "spec_ref": "FR-034",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "100.10",
+     "description": "Worked example W1",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-05-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "100.10",
+    "description": "Worked example W1",
+    "category": "Food",
+    "payment_method": "Cash",
+    "expense_date": "2026-05-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "BUD-W2",
+   "spec_ref": "FR-034",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "200.20",
+     "description": "Worked example W2",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-05-11"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "200.20",
+    "description": "Worked example W2",
+    "category": "Food",
+    "payment_method": "Cash",
+    "expense_date": "2026-05-11",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "BUD-W3",
+   "spec_ref": "FR-034",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "50.00",
+     "description": "Worked example W3",
+     "category": "Transport",
+     "payment_method": "Cash",
+     "expense_date": "2026-05-12"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "50.00",
+    "description": "Worked example W3",
+    "category": "Transport",
+    "payment_method": "Cash",
+    "expense_date": "2026-05-12",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "BUD-W-SUM",
+   "spec_ref": "FR-034, data-model.md worked example",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-05"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-05",
+    "total_spent": "350.30",
+    "expense_count": 3,
+    "total_recorded_count": 94,
+    "by_category": [
+     {
+      "category": "Food",
+      "total": "300.30",
+      "count": 2
+     },
+     {
+      "category": "Transport",
+      "total": "50.00",
+      "count": 1
+     }
+    ],
+    "budget": {
+     "month": "2026-05",
+     "amount": "10000.00"
+    },
+    "remaining": "9649.70",
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "100.10 + 200.20 + 50.00 = 350.30; remaining 10000.00 - 350.30 = 9649.70; Food 100.10 + 200.20 = 300.30 (2), Transport 50.00 (1)."
+  }
+ ]
+}

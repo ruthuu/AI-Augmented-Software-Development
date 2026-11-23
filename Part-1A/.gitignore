@@ -1,0 +1,29 @@
+# Secrets and local data
+.env
+.env.*
+!.env.example
+*.db
+backend/data/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+
+# Frontend (yarn.lock is kept)
+node_modules/
+dist/
+coverage/
+yarn-error.log
+*.log
+
+# Stray folder from the pre-freeze harness defect (see harness-log.md, Failure register): kept on disk, not submitted
+/Part-1A/
+
+# Evidence: the 7 files in evidence/snapshots/initial-generation-source/backend/.ruff_cache/ are listed in evidence.sha256.txt.
+# That folder carries its own .gitignore ("*") that no rule in this file can override, so they must be added with:
+#   git add -f evidence/snapshots/initial-generation-source/backend/.ruff_cache

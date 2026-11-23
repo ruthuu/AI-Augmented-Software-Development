@@ -1,0 +1,16 @@
+yarn run v1.22.22
+$ vitest run
+
+ RUN  v5.1.0 C:/Users/rruthu/Documents/AIAugmentedSDLC/assignment-1/Part-1A/frontend
+
+
+ Test Files  13 passed (13)
+      Tests  99 passed (99)
+   Start at  13:04:07
+   Duration  18.08s (environment 57%, tests 20%, setup 17%, transform 3%, import 3%)
+
+Environment  jsdom was created 13 times · 77.07s total, 57% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+
+Done in 19.32s.

@@ -1,0 +1,2432 @@
+{
+ "suite": "dataset",
+ "description": "55 hand-calculated expenses over Sep-Nov 2026 (plus one on 2026-08-31), all 8 categories",
+ "cases": [
+  {
+   "id": "DS-C-S01",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "120.50",
+     "description": "Dataset S01",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-09-01"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "120.50",
+    "description": "Dataset S01",
+    "category": "Food",
+    "payment_method": "Cash",
+    "expense_date": "2026-09-01",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S02",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "45.00",
+     "description": "Dataset S02",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-01"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "45.00",
+    "description": "Dataset S02",
+    "category": "Transport",
+    "payment_method": "UPI",
+    "expense_date": "2026-09-01",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S03",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "2499.99",
+     "description": "Dataset S03",
+     "category": "Shopping",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-09-03"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "2499.99",
+    "description": "Dataset S03",
+    "category": "Shopping",
+    "payment_method": "Credit Card",
+    "expense_date": "2026-09-03",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S04",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "1850.00",
+     "description": "Dataset S04",
+     "category": "Bills",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-09-05"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "1850.00",
+    "description": "Dataset S04",
+    "category": "Bills",
+    "payment_method": "Net Banking",
+    "expense_date": "2026-09-05",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S05",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "650.00",
+     "description": "Dataset S05",
+     "category": "Entertainment",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-07"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "650.00",
+    "description": "Dataset S05",
+    "category": "Entertainment",
+    "payment_method": "UPI",
+    "expense_date": "2026-09-07",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S06",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "320.75",
+     "description": "Dataset S06",
+     "category": "Healthcare",
+     "payment_method": "Debit Card",
+     "expense_date": "2026-09-09"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "320.75",
+    "description": "Dataset S06",
+    "category": "Healthcare",
+    "payment_method": "Debit Card",
+    "expense_date": "2026-09-09",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S07",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "4999.00",
+     "description": "Dataset S07",
+     "category": "Education",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-09-11"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "4999.00",
+    "description": "Dataset S07",
+    "category": "Education",
+    "payment_method": "Net Banking",
+    "expense_date": "2026-09-11",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S08",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "15.25",
+     "description": "Dataset S08",
+     "category": "Other",
+     "payment_method": "Cash",
+     "expense_date": "2026-09-13"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "15.25",
+    "description": "Dataset S08",
+    "category": "Other",
+    "payment_method": "Cash",
+    "expense_date": "2026-09-13",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S09",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "210.40",
+     "description": "Dataset S09",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-15"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "210.40",
+    "description": "Dataset S09",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-09-15",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S10",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "80.00",
+     "description": "Dataset S10",
+     "category": "Transport",
+     "payment_method": "Cash",
+     "expense_date": "2026-09-17"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "80.00",
+    "description": "Dataset S10",
+    "category": "Transport",
+    "payment_method": "Cash",
+    "expense_date": "2026-09-17",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S11",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "1299.50",
+     "description": "Dataset S11",
+     "category": "Shopping",
+     "payment_method": "Debit Card",
+     "expense_date": "2026-09-19"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "1299.50",
+    "description": "Dataset S11",
+    "category": "Shopping",
+    "payment_method": "Debit Card",
+    "expense_date": "2026-09-19",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S12",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "999.01",
+     "description": "Dataset S12",
+     "category": "Bills",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-09-21"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "999.01",
+    "description": "Dataset S12",
+    "category": "Bills",
+    "payment_method": "Credit Card",
+    "expense_date": "2026-09-21",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S13",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "300.00",
+     "description": "Dataset S13",
+     "category": "Entertainment",
+     "payment_method": "Cash",
+     "expense_date": "2026-09-23"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "300.00",
+    "description": "Dataset S13",
+    "category": "Entertainment",
+    "payment_method": "Cash",
+    "expense_date": "2026-09-23",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S14",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "75.30",
+     "description": "Dataset S14",
+     "category": "Healthcare",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-25"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "75.30",
+    "description": "Dataset S14",
+    "category": "Healthcare",
+    "payment_method": "UPI",
+    "expense_date": "2026-09-25",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S15",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "1200.00",
+     "description": "Dataset S15",
+     "category": "Education",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-09-27"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "1200.00",
+    "description": "Dataset S15",
+    "category": "Education",
+    "payment_method": "Credit Card",
+    "expense_date": "2026-09-27",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S16",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "99.99",
+     "description": "Dataset S16",
+     "category": "Food",
+     "payment_method": "Other",
+     "expense_date": "2026-09-29"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "99.99",
+    "description": "Dataset S16",
+    "category": "Food",
+    "payment_method": "Other",
+    "expense_date": "2026-09-29",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S17",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "60.10",
+     "description": "Dataset S17",
+     "category": "Transport",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-09-30"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "60.10",
+    "description": "Dataset S17",
+    "category": "Transport",
+    "payment_method": "Net Banking",
+    "expense_date": "2026-09-30",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-S18",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "0.01",
+     "description": "Dataset S18",
+     "category": "Other",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-30"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "0.01",
+    "description": "Dataset S18",
+    "category": "Other",
+    "payment_method": "UPI",
+    "expense_date": "2026-09-30",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T01",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "350.20",
+     "description": "Dataset T01",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-31"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "350.20",
+    "description": "Dataset T01",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-10-31",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T02",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "120.00",
+     "description": "Dataset T02",
+     "category": "Transport",
+     "payment_method": "Cash",
+     "expense_date": "2026-10-01"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "120.00",
+    "description": "Dataset T02",
+    "category": "Transport",
+    "payment_method": "Cash",
+    "expense_date": "2026-10-01",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T03",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "3999.00",
+     "description": "Dataset T03",
+     "category": "Shopping",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-10-02"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "3999.00",
+    "description": "Dataset T03",
+    "category": "Shopping",
+    "payment_method": "Credit Card",
+    "expense_date": "2026-10-02",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T04",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "1450.75",
+     "description": "Dataset T04",
+     "category": "Bills",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-04"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "1450.75",
+    "description": "Dataset T04",
+    "category": "Bills",
+    "payment_method": "UPI",
+    "expense_date": "2026-10-04",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T05",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "499.00",
+     "description": "Dataset T05",
+     "category": "Entertainment",
+     "payment_method": "Debit Card",
+     "expense_date": "2026-10-06"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "499.00",
+    "description": "Dataset T05",
+    "category": "Entertainment",
+    "payment_method": "Debit Card",
+    "expense_date": "2026-10-06",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T06",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "1200.00",
+     "description": "Dataset T06",
+     "category": "Healthcare",
+     "payment_method": "Cash",
+     "expense_date": "2026-10-08"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "1200.00",
+    "description": "Dataset T06",
+    "category": "Healthcare",
+    "payment_method": "Cash",
+    "expense_date": "2026-10-08",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T07",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "2500.00",
+     "description": "Dataset T07",
+     "category": "Education",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "2500.00",
+    "description": "Dataset T07",
+    "category": "Education",
+    "payment_method": "UPI",
+    "expense_date": "2026-10-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T08",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "89.90",
+     "description": "Dataset T08",
+     "category": "Other",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-10-12"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "89.90",
+    "description": "Dataset T08",
+    "category": "Other",
+    "payment_method": "Net Banking",
+    "expense_date": "2026-10-12",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T09",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "175.35",
+     "description": "Dataset T09",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-10-14"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "175.35",
+    "description": "Dataset T09",
+    "category": "Food",
+    "payment_method": "Cash",
+    "expense_date": "2026-10-14",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T10",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "230.00",
+     "description": "Dataset T10",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-16"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "230.00",
+    "description": "Dataset T10",
+    "category": "Transport",
+    "payment_method": "UPI",
+    "expense_date": "2026-10-16",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T11",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "799.99",
+     "description": "Dataset T11",
+     "category": "Shopping",
+     "payment_method": "Cash",
+     "expense_date": "2026-10-18"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "799.99",
+    "description": "Dataset T11",
+    "category": "Shopping",
+    "payment_method": "Cash",
+    "expense_date": "2026-10-18",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T12",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "2200.00",
+     "description": "Dataset T12",
+     "category": "Bills",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-10-20"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "2200.00",
+    "description": "Dataset T12",
+    "category": "Bills",
+    "payment_method": "Net Banking",
+    "expense_date": "2026-10-20",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T13",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "150.50",
+     "description": "Dataset T13",
+     "category": "Entertainment",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-22"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "150.50",
+    "description": "Dataset T13",
+    "category": "Entertainment",
+    "payment_method": "UPI",
+    "expense_date": "2026-10-22",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T14",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "640.00",
+     "description": "Dataset T14",
+     "category": "Healthcare",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-10-24"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "640.00",
+    "description": "Dataset T14",
+    "category": "Healthcare",
+    "payment_method": "Credit Card",
+    "expense_date": "2026-10-24",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T15",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "800.00",
+     "description": "Dataset T15",
+     "category": "Education",
+     "payment_method": "Cash",
+     "expense_date": "2026-10-26"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "800.00",
+    "description": "Dataset T15",
+    "category": "Education",
+    "payment_method": "Cash",
+    "expense_date": "2026-10-26",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T16",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "20.00",
+     "description": "Dataset T16",
+     "category": "Other",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-28"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "20.00",
+    "description": "Dataset T16",
+    "category": "Other",
+    "payment_method": "UPI",
+    "expense_date": "2026-10-28",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T17",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "15.00",
+     "description": "Dataset T17",
+     "category": "Transport",
+     "payment_method": "Debit Card",
+     "expense_date": "2026-10-31"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "15.00",
+    "description": "Dataset T17",
+    "category": "Transport",
+    "payment_method": "Debit Card",
+    "expense_date": "2026-10-31",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-T18",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "64.99",
+     "description": "Dataset T18",
+     "category": "Food",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-10-01"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "64.99",
+    "description": "Dataset T18",
+    "category": "Food",
+    "payment_method": "Credit Card",
+    "expense_date": "2026-10-01",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N01",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "310.00",
+     "description": "Dataset N01",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-11-01"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "310.00",
+    "description": "Dataset N01",
+    "category": "Food",
+    "payment_method": "Cash",
+    "expense_date": "2026-11-01",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N02",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "55.50",
+     "description": "Dataset N02",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-02"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "55.50",
+    "description": "Dataset N02",
+    "category": "Transport",
+    "payment_method": "UPI",
+    "expense_date": "2026-11-02",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N03",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "1599.00",
+     "description": "Dataset N03",
+     "category": "Shopping",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-03"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "1599.00",
+    "description": "Dataset N03",
+    "category": "Shopping",
+    "payment_method": "UPI",
+    "expense_date": "2026-11-03",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N04",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "1750.00",
+     "description": "Dataset N04",
+     "category": "Bills",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-11-04"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "1750.00",
+    "description": "Dataset N04",
+    "category": "Bills",
+    "payment_method": "Net Banking",
+    "expense_date": "2026-11-04",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N05",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "899.00",
+     "description": "Dataset N05",
+     "category": "Entertainment",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-11-05"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "899.00",
+    "description": "Dataset N05",
+    "category": "Entertainment",
+    "payment_method": "Credit Card",
+    "expense_date": "2026-11-05",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N06",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "450.00",
+     "description": "Dataset N06",
+     "category": "Healthcare",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-06"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "450.00",
+    "description": "Dataset N06",
+    "category": "Healthcare",
+    "payment_method": "UPI",
+    "expense_date": "2026-11-06",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N07",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "3000.00",
+     "description": "Dataset N07",
+     "category": "Education",
+     "payment_method": "Cash",
+     "expense_date": "2026-11-07"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "3000.00",
+    "description": "Dataset N07",
+    "category": "Education",
+    "payment_method": "Cash",
+    "expense_date": "2026-11-07",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N08",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "42.42",
+     "description": "Dataset N08",
+     "category": "Other",
+     "payment_method": "Debit Card",
+     "expense_date": "2026-11-08"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "42.42",
+    "description": "Dataset N08",
+    "category": "Other",
+    "payment_method": "Debit Card",
+    "expense_date": "2026-11-08",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N09",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "188.88",
+     "description": "Dataset N09",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-09"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "188.88",
+    "description": "Dataset N09",
+    "category": "Food",
+    "payment_method": "UPI",
+    "expense_date": "2026-11-09",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N10",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "95.05",
+     "description": "Dataset N10",
+     "category": "Transport",
+     "payment_method": "Cash",
+     "expense_date": "2026-11-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "95.05",
+    "description": "Dataset N10",
+    "category": "Transport",
+    "payment_method": "Cash",
+    "expense_date": "2026-11-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N11",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "249.50",
+     "description": "Dataset N11",
+     "category": "Shopping",
+     "payment_method": "Other",
+     "expense_date": "2026-11-10"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "249.50",
+    "description": "Dataset N11",
+    "category": "Shopping",
+    "payment_method": "Other",
+    "expense_date": "2026-11-10",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N12",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "600.00",
+     "description": "Dataset N12",
+     "category": "Bills",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-11"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "600.00",
+    "description": "Dataset N12",
+    "category": "Bills",
+    "payment_method": "UPI",
+    "expense_date": "2026-11-11",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N13",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "120.00",
+     "description": "Dataset N13",
+     "category": "Entertainment",
+     "payment_method": "Cash",
+     "expense_date": "2026-11-11"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "120.00",
+    "description": "Dataset N13",
+    "category": "Entertainment",
+    "payment_method": "Cash",
+    "expense_date": "2026-11-11",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N14",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "1000.00",
+     "description": "Dataset N14",
+     "category": "Healthcare",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-11-12"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "1000.00",
+    "description": "Dataset N14",
+    "category": "Healthcare",
+    "payment_method": "Credit Card",
+    "expense_date": "2026-11-12",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N15",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "1000.00",
+     "description": "Dataset N15",
+     "category": "Education",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-12"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "1000.00",
+    "description": "Dataset N15",
+    "category": "Education",
+    "payment_method": "UPI",
+    "expense_date": "2026-11-12",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N16",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "25.00",
+     "description": "Dataset N16",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-11-12"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "25.00",
+    "description": "Dataset N16",
+    "category": "Food",
+    "payment_method": "Cash",
+    "expense_date": "2026-11-12",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N17",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "5.55",
+     "description": "Dataset N17",
+     "category": "Other",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-12"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "5.55",
+    "description": "Dataset N17",
+    "category": "Other",
+    "payment_method": "UPI",
+    "expense_date": "2026-11-12",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-N18",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "70.00",
+     "description": "Dataset N18",
+     "category": "Transport",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-11-12"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "70.00",
+    "description": "Dataset N18",
+    "category": "Transport",
+    "payment_method": "Net Banking",
+    "expense_date": "2026-11-12",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-C-A01",
+   "spec_ref": "FR-001, FR-016, FR-017, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "POST",
+    "path": "/api/expenses",
+    "body": {
+     "amount": "11.11",
+     "description": "Dataset A01",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-08-31"
+    }
+   },
+   "expected_status": 201,
+   "expected_body_or_fields": {
+    "id": "$int",
+    "amount": "11.11",
+    "description": "Dataset A01",
+    "category": "Food",
+    "payment_method": "Cash",
+    "expense_date": "2026-08-31",
+    "created_at": "$utc",
+    "updated_at": "$utc"
+   }
+  },
+  {
+   "id": "DS-SUM-SEP",
+   "spec_ref": "FR-025, FR-029, FR-030, FR-031, FR-034, FR-035, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-09"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-09",
+    "total_spent": "14824.80",
+    "expense_count": 18,
+    "total_recorded_count": 55,
+    "by_category": [
+     {
+      "category": "Education",
+      "total": "6199.00",
+      "count": 2
+     },
+     {
+      "category": "Shopping",
+      "total": "3799.49",
+      "count": 2
+     },
+     {
+      "category": "Bills",
+      "total": "2849.01",
+      "count": 2
+     },
+     {
+      "category": "Entertainment",
+      "total": "950.00",
+      "count": 2
+     },
+     {
+      "category": "Food",
+      "total": "430.89",
+      "count": 3
+     },
+     {
+      "category": "Healthcare",
+      "total": "396.05",
+      "count": 2
+     },
+     {
+      "category": "Transport",
+      "total": "185.10",
+      "count": 3
+     },
+     {
+      "category": "Other",
+      "total": "15.26",
+      "count": 2
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "note": "Budget is not set for this month; total_recorded_count is the all-time count, 55.",
+   "derivation": "Month 2026-09, 18 expenses. Education: 4999.00 + 1200.00 = 6199.00 (2); Shopping: 2499.99 + 1299.50 = 3799.49 (2); Bills: 1850.00 + 999.01 = 2849.01 (2); Entertainment: 650.00 + 300.00 = 950.00 (2); Food: 120.50 + 210.40 + 99.99 = 430.89 (3); Healthcare: 320.75 + 75.30 = 396.05 (2); Transport: 45.00 + 80.00 + 60.10 = 185.10 (3); Other: 15.25 + 0.01 = 15.26 (2). Total = sum of category totals = 14824.80."
+  },
+  {
+   "id": "DS-LIST-SEP",
+   "spec_ref": "FR-002, FR-019, FR-035, SC-007",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-09"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "0.01",
+     "description": "Dataset S18",
+     "category": "Other",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-30",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "60.10",
+     "description": "Dataset S17",
+     "category": "Transport",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-09-30",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "99.99",
+     "description": "Dataset S16",
+     "category": "Food",
+     "payment_method": "Other",
+     "expense_date": "2026-09-29",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1200.00",
+     "description": "Dataset S15",
+     "category": "Education",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-09-27",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "75.30",
+     "description": "Dataset S14",
+     "category": "Healthcare",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-25",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "300.00",
+     "description": "Dataset S13",
+     "category": "Entertainment",
+     "payment_method": "Cash",
+     "expense_date": "2026-09-23",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "999.01",
+     "description": "Dataset S12",
+     "category": "Bills",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-09-21",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1299.50",
+     "description": "Dataset S11",
+     "category": "Shopping",
+     "payment_method": "Debit Card",
+     "expense_date": "2026-09-19",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "80.00",
+     "description": "Dataset S10",
+     "category": "Transport",
+     "payment_method": "Cash",
+     "expense_date": "2026-09-17",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "210.40",
+     "description": "Dataset S09",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-15",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "15.25",
+     "description": "Dataset S08",
+     "category": "Other",
+     "payment_method": "Cash",
+     "expense_date": "2026-09-13",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "4999.00",
+     "description": "Dataset S07",
+     "category": "Education",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-09-11",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "320.75",
+     "description": "Dataset S06",
+     "category": "Healthcare",
+     "payment_method": "Debit Card",
+     "expense_date": "2026-09-09",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "650.00",
+     "description": "Dataset S05",
+     "category": "Entertainment",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-07",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1850.00",
+     "description": "Dataset S04",
+     "category": "Bills",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-09-05",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "2499.99",
+     "description": "Dataset S03",
+     "category": "Shopping",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-09-03",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "45.00",
+     "description": "Dataset S02",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-09-01",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "120.50",
+     "description": "Dataset S01",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-09-01",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ],
+   "note": "Order: expense_date descending, then id descending (later created first)."
+  },
+  {
+   "id": "DS-SUM-OCT",
+   "spec_ref": "FR-025, FR-029, FR-030, FR-031, FR-034, FR-035, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-10"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-10",
+    "total_spent": "15304.68",
+    "expense_count": 18,
+    "total_recorded_count": 55,
+    "by_category": [
+     {
+      "category": "Shopping",
+      "total": "4798.99",
+      "count": 2
+     },
+     {
+      "category": "Bills",
+      "total": "3650.75",
+      "count": 2
+     },
+     {
+      "category": "Education",
+      "total": "3300.00",
+      "count": 2
+     },
+     {
+      "category": "Healthcare",
+      "total": "1840.00",
+      "count": 2
+     },
+     {
+      "category": "Entertainment",
+      "total": "649.50",
+      "count": 2
+     },
+     {
+      "category": "Food",
+      "total": "590.54",
+      "count": 3
+     },
+     {
+      "category": "Transport",
+      "total": "365.00",
+      "count": 3
+     },
+     {
+      "category": "Other",
+      "total": "109.90",
+      "count": 2
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "note": "Budget is not set for this month; total_recorded_count is the all-time count, 55.",
+   "derivation": "Month 2026-10, 18 expenses. Shopping: 3999.00 + 799.99 = 4798.99 (2); Bills: 1450.75 + 2200.00 = 3650.75 (2); Education: 2500.00 + 800.00 = 3300.00 (2); Healthcare: 1200.00 + 640.00 = 1840.00 (2); Entertainment: 499.00 + 150.50 = 649.50 (2); Food: 350.20 + 175.35 + 64.99 = 590.54 (3); Transport: 120.00 + 230.00 + 15.00 = 365.00 (3); Other: 89.90 + 20.00 = 109.90 (2). Total = sum of category totals = 15304.68."
+  },
+  {
+   "id": "DS-LIST-OCT",
+   "spec_ref": "FR-002, FR-019, FR-035, SC-007",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-10"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "15.00",
+     "description": "Dataset T17",
+     "category": "Transport",
+     "payment_method": "Debit Card",
+     "expense_date": "2026-10-31",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "350.20",
+     "description": "Dataset T01",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-31",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "20.00",
+     "description": "Dataset T16",
+     "category": "Other",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-28",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "800.00",
+     "description": "Dataset T15",
+     "category": "Education",
+     "payment_method": "Cash",
+     "expense_date": "2026-10-26",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "640.00",
+     "description": "Dataset T14",
+     "category": "Healthcare",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-10-24",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "150.50",
+     "description": "Dataset T13",
+     "category": "Entertainment",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-22",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "2200.00",
+     "description": "Dataset T12",
+     "category": "Bills",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-10-20",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "799.99",
+     "description": "Dataset T11",
+     "category": "Shopping",
+     "payment_method": "Cash",
+     "expense_date": "2026-10-18",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "230.00",
+     "description": "Dataset T10",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-16",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "175.35",
+     "description": "Dataset T09",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-10-14",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "89.90",
+     "description": "Dataset T08",
+     "category": "Other",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-10-12",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "2500.00",
+     "description": "Dataset T07",
+     "category": "Education",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1200.00",
+     "description": "Dataset T06",
+     "category": "Healthcare",
+     "payment_method": "Cash",
+     "expense_date": "2026-10-08",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "499.00",
+     "description": "Dataset T05",
+     "category": "Entertainment",
+     "payment_method": "Debit Card",
+     "expense_date": "2026-10-06",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1450.75",
+     "description": "Dataset T04",
+     "category": "Bills",
+     "payment_method": "UPI",
+     "expense_date": "2026-10-04",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "3999.00",
+     "description": "Dataset T03",
+     "category": "Shopping",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-10-02",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "64.99",
+     "description": "Dataset T18",
+     "category": "Food",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-10-01",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "120.00",
+     "description": "Dataset T02",
+     "category": "Transport",
+     "payment_method": "Cash",
+     "expense_date": "2026-10-01",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ],
+   "note": "Order: expense_date descending, then id descending (later created first)."
+  },
+  {
+   "id": "DS-SUM-NOV",
+   "spec_ref": "FR-025, FR-029, FR-030, FR-031, FR-034, FR-035, SC-003",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-11"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-11",
+    "total_spent": "11459.90",
+    "expense_count": 18,
+    "total_recorded_count": 55,
+    "by_category": [
+     {
+      "category": "Education",
+      "total": "4000.00",
+      "count": 2
+     },
+     {
+      "category": "Bills",
+      "total": "2350.00",
+      "count": 2
+     },
+     {
+      "category": "Shopping",
+      "total": "1848.50",
+      "count": 2
+     },
+     {
+      "category": "Healthcare",
+      "total": "1450.00",
+      "count": 2
+     },
+     {
+      "category": "Entertainment",
+      "total": "1019.00",
+      "count": 2
+     },
+     {
+      "category": "Food",
+      "total": "523.88",
+      "count": 3
+     },
+     {
+      "category": "Transport",
+      "total": "220.55",
+      "count": 3
+     },
+     {
+      "category": "Other",
+      "total": "47.97",
+      "count": 2
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "note": "Budget is not set for this month; total_recorded_count is the all-time count, 55.",
+   "derivation": "Month 2026-11, 18 expenses. Education: 3000.00 + 1000.00 = 4000.00 (2); Bills: 1750.00 + 600.00 = 2350.00 (2); Shopping: 1599.00 + 249.50 = 1848.50 (2); Healthcare: 450.00 + 1000.00 = 1450.00 (2); Entertainment: 899.00 + 120.00 = 1019.00 (2); Food: 310.00 + 188.88 + 25.00 = 523.88 (3); Transport: 55.50 + 95.05 + 70.00 = 220.55 (3); Other: 42.42 + 5.55 = 47.97 (2). Total = sum of category totals = 11459.90."
+  },
+  {
+   "id": "DS-LIST-NOV",
+   "spec_ref": "FR-002, FR-019, FR-035, SC-007",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses?month=2026-11"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": [
+    {
+     "id": "$int",
+     "amount": "70.00",
+     "description": "Dataset N18",
+     "category": "Transport",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-11-12",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "5.55",
+     "description": "Dataset N17",
+     "category": "Other",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-12",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "25.00",
+     "description": "Dataset N16",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-11-12",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1000.00",
+     "description": "Dataset N15",
+     "category": "Education",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-12",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1000.00",
+     "description": "Dataset N14",
+     "category": "Healthcare",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-11-12",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "120.00",
+     "description": "Dataset N13",
+     "category": "Entertainment",
+     "payment_method": "Cash",
+     "expense_date": "2026-11-11",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "600.00",
+     "description": "Dataset N12",
+     "category": "Bills",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-11",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "249.50",
+     "description": "Dataset N11",
+     "category": "Shopping",
+     "payment_method": "Other",
+     "expense_date": "2026-11-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "95.05",
+     "description": "Dataset N10",
+     "category": "Transport",
+     "payment_method": "Cash",
+     "expense_date": "2026-11-10",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "188.88",
+     "description": "Dataset N09",
+     "category": "Food",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-09",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "42.42",
+     "description": "Dataset N08",
+     "category": "Other",
+     "payment_method": "Debit Card",
+     "expense_date": "2026-11-08",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "3000.00",
+     "description": "Dataset N07",
+     "category": "Education",
+     "payment_method": "Cash",
+     "expense_date": "2026-11-07",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "450.00",
+     "description": "Dataset N06",
+     "category": "Healthcare",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-06",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "899.00",
+     "description": "Dataset N05",
+     "category": "Entertainment",
+     "payment_method": "Credit Card",
+     "expense_date": "2026-11-05",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1750.00",
+     "description": "Dataset N04",
+     "category": "Bills",
+     "payment_method": "Net Banking",
+     "expense_date": "2026-11-04",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "1599.00",
+     "description": "Dataset N03",
+     "category": "Shopping",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-03",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "55.50",
+     "description": "Dataset N02",
+     "category": "Transport",
+     "payment_method": "UPI",
+     "expense_date": "2026-11-02",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    },
+    {
+     "id": "$int",
+     "amount": "310.00",
+     "description": "Dataset N01",
+     "category": "Food",
+     "payment_method": "Cash",
+     "expense_date": "2026-11-01",
+     "created_at": "$utc",
+     "updated_at": "$utc"
+    }
+   ],
+   "note": "Order: expense_date descending, then id descending (later created first)."
+  },
+  {
+   "id": "DS-SUM-AUG",
+   "spec_ref": "FR-035",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary?month=2026-08"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-08",
+    "total_spent": "11.11",
+    "expense_count": 1,
+    "total_recorded_count": 55,
+    "by_category": [
+     {
+      "category": "Food",
+      "total": "11.11",
+      "count": 1
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "derivation": "Month 2026-08 holds only A01 (2026-08-31, Food 11.11): total 11.11, count 1."
+  },
+  {
+   "id": "DS-SUM-DEFAULT",
+   "spec_ref": "FR-028, FR-041",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/summary"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "month": "2026-11",
+    "total_spent": "11459.90",
+    "expense_count": 18,
+    "total_recorded_count": 55,
+    "by_category": [
+     {
+      "category": "Education",
+      "total": "4000.00",
+      "count": 2
+     },
+     {
+      "category": "Bills",
+      "total": "2350.00",
+      "count": 2
+     },
+     {
+      "category": "Shopping",
+      "total": "1848.50",
+      "count": 2
+     },
+     {
+      "category": "Healthcare",
+      "total": "1450.00",
+      "count": 2
+     },
+     {
+      "category": "Entertainment",
+      "total": "1019.00",
+      "count": 2
+     },
+     {
+      "category": "Food",
+      "total": "523.88",
+      "count": 3
+     },
+     {
+      "category": "Transport",
+      "total": "220.55",
+      "count": 3
+     },
+     {
+      "category": "Other",
+      "total": "47.97",
+      "count": 2
+     }
+    ],
+    "budget": null,
+    "remaining": null,
+    "over_budget": false,
+    "over_budget_by": null
+   },
+   "note": "No month parameter: defaults to the month of today (2026-11)."
+  },
+  {
+   "id": "DS-LIST-ALL",
+   "spec_ref": "FR-002, FR-021",
+   "phase": "write",
+   "kind": "required",
+   "request": {
+    "method": "GET",
+    "path": "/api/expenses"
+   },
+   "expected_status": 200,
+   "expected_body_or_fields": {
+    "$expense_order": true,
+    "$length": 55
+   },
+   "derivation": "18 (Sep) + 18 (Oct) + 18 (Nov) + 1 (Aug 31) = 55."
+  }
+ ]
+}

@@ -1,0 +1,11 @@
+{
+    "id":  "API-timing",
+    "kind":  "supplementary",
+    "command":  "python harness\\run_api_checks.py --base-url http://127.0.0.1:54992 --phase timing --out api-results.json --append",
+    "working_directory":  "C:\\Users\\rruthu\\Documents\\AIAugmentedSDLC\\assignment-1\\Part-1A",
+    "start_utc":  "2026-11-21T07:34:36Z",
+    "end_utc":  "2026-11-21T07:34:55Z",
+    "exit_code":  "0",
+    "status":  "PASS",
+    "reason":  "1 cases compared and all matched"
+}

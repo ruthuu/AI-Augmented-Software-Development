@@ -1,0 +1,19 @@
+yarn run v1.22.22
+$ vitest run
+
+ RUN  v5.1.0 C:/Users/rruthu/Documents/AIAugmentedSDLC/assignment-1/Part-1A/frontend
+
+ ❯ src/App.test.tsx (10 tests | 1 failed) 9677ms
+   ❯ App shell (4)
+     × shows the shell with the backend date once the configuration has loaded 905ms
+
+ Test Files  1 failed | 12 passed (13)
+      Tests  1 failed | 98 passed (99)
+   Start at  12:36:11
+   Duration  31.03s (environment 48%, tests 23%, setup 22%, transform 4%, import 3%, worker 1%)
+
+Environment  jsdom was created 13 times · 116.42s total, 48% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

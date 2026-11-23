@@ -1,0 +1,7 @@
+{
+  "intent": "CREATE",
+  "title": "pay rent",
+  "reminder_reference": null,
+  "scheduled_at": "2026-11-30T09:00:00+05:30",
+  "clarification": null
+}
